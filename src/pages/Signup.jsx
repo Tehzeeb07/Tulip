@@ -1,12 +1,12 @@
-// src/pages/Signup.jsx
 import { useState } from "react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useNavigate, Link } from "react-router-dom";
+import "./Auth.css";
 
 export default function Signup() {
   const { signIn } = useAuthActions();
   const navigate = useNavigate();
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -19,7 +19,12 @@ export default function Signup() {
       return;
     }
     try {
-      await signIn("password", { email, password, name, flow: "signUp" });
+      await signIn("password", {
+        email,
+        password,
+        username,
+        flow: "signUp",
+      });
       navigate("/home");
     } catch (err) {
       setError("Something went wrong. Try a different email.");
@@ -27,36 +32,39 @@ export default function Signup() {
   };
 
   return (
-    <div className="signup-page">
-      <form onSubmit={handleSubmit}>
+    <div className="auth-page">
+      <div className="auth-box">
         <h1>Create an account</h1>
-        <input
-          type="text"
-          placeholder="Your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="name@company.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="At least 8 characters"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        {error && <div className="err">{error}</div>}
-        <button type="submit">Create account</button>
-      </form>
-      <p>
-        Already have an account? <Link to="/login">Log in</Link>
-      </p>
+        <p className="auth-sub">Free to join — no purchases happen here, just save what you love.</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            placeholder="name@company.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="At least 8 characters"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          {error && <div className="err">{error}</div>}
+          <button type="submit">Create account</button>
+        </form>
+        <p className="auth-switch">
+          Already have an account? <Link to="/login">Log in</Link>
+        </p>
+      </div>
     </div>
   );
 }

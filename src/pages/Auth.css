@@ -1,0 +1,87 @@
+/* src/pages/Auth.css */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FAF6EF;
+  font-family: 'Inter', sans-serif;
+  padding: 20px;
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-box h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 34px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #1B1613;
+}
+
+.auth-sub {
+  font-size: 14px;
+  color: rgba(27,22,19,0.6);
+  margin-bottom: 30px;
+}
+
+.auth-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid rgba(27,22,19,0.14);
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #1B1613;
+  box-sizing: border-box;
+}
+
+.auth-box input:focus {
+  outline: none;
+  border-color: #1B1613;
+}
+
+.auth-box button {
+  background: #1B1613;
+  color: #FAF6EF;
+  border: none;
+  padding: 15px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 4px;
+}
+
+.auth-box button:hover {
+  background: #6B1F2A;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 24px;
+  color: rgba(27,22,19,0.65);
+}
+
+.auth-switch a {
+  color: #1B1613;
+  border-bottom: 1px solid #1B1613;
+  text-decoration: none;
+}
+
+.err {
+  font-size: 13px;
+  color: #6B1F2A;
+}
