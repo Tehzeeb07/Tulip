@@ -1,7 +1,7 @@
-// src/pages/Login.jsx
 import { useState } from "react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useNavigate, Link } from "react-router-dom";
+import "./Auth.css";
 
 export default function Login() {
   const { signIn } = useAuthActions();
@@ -22,29 +22,32 @@ export default function Login() {
   };
 
   return (
-    <div className="login-page">
-      <form onSubmit={handleSubmit}>
+    <div className="auth-page">
+      <div className="auth-box">
         <h1>Welcome back</h1>
-        <input
-          type="email"
-          placeholder="name@company.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        {error && <div className="err">{error}</div>}
-        <button type="submit">Log in</button>
-      </form>
-      <p>
-        New to Tulip? <Link to="/signup">Create an account</Link>
-      </p>
+        <p className="auth-sub">Log in to save favorites and hear about new collections first.</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="name@company.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          {error && <div className="err">{error}</div>}
+          <button type="submit">Log in</button>
+        </form>
+        <p className="auth-switch">
+          New to Tulip? <Link to="/login">Log in</Link>
+        </p>
+      </div>
     </div>
   );
 }
