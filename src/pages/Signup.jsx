@@ -26,7 +26,7 @@ export default function Signup() {
         flow: "signUp",
       });
       navigate("/home");
-    } catch (err) {
+    } catch {
       setError("Something went wrong. Try a different email.");
     }
   };

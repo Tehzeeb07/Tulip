@@ -16,7 +16,7 @@ export default function Login() {
     try {
       await signIn("password", { email, password, flow: "signIn" });
       navigate("/home");
-    } catch (err) {
+    } catch {
       setError("Invalid email or password.");
     }
   };
