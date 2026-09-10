@@ -78,10 +78,10 @@ function VideoBackground() {
 function LandingPage() {
   const menuItems = [
     { label: "Home", active: true },
-    { label: "Studio" },
-    { label: "About" },
+    { label: "Collection" },
+    { label: "Our Story" },
     { label: "Journal" },
-    { label: "Reach Us" },
+    { label: "Visit Us" },
   ];
 
   return (
