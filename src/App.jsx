@@ -121,14 +121,14 @@ function LandingPage() {
 
         <main className="flex flex-col items-center justify-center px-6 pb-40 pt-[calc(8rem-75px)] text-center">
           <h1 className="max-w-7xl animate-fade-rise font-display text-5xl font-normal leading-[0.95] tracking-[-2.46px] text-black sm:text-7xl md:text-8xl">
-            Beyond <span className="text-[#6F6F6F] italic">silence,</span> we
-            build the <span className="text-[#6F6F6F] italic">eternal.</span>
+            Flowers, <span className="text-[#6F6F6F] italic">arranged</span> like
+            it <span className="text-[#6F6F6F] italic">matters.</span>
           </h1>
 
           <p className="mt-8 max-w-2xl animate-fade-rise-delay text-base leading-relaxed text-[#6F6F6F] sm:text-lg">
-            Building platforms for brilliant minds, fearless makers, and thoughtful
-            souls. Through the noise, we craft digital havens for deep work and pure
-            flows.
+            Tulip composes every bouquet by hand, the day you collect it. No
+            pre-made stock, no wholesale shortcuts — just arrangements worth
+            building a moment around.
           </p>
 
           <Link
