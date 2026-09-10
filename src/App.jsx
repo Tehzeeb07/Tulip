@@ -139,9 +139,9 @@ function LandingPage() {
           </Link>
 
           <p className="mt-6 text-sm text-[#6F6F6F]">
-            No account yet?{" "}
+            New here?{" "}
             <Link to="/signup" className="text-black underline-offset-4 hover:underline">
-              Sign up
+              Create an account
             </Link>{" "}
             or{" "}
             <Link to="/login" className="text-black underline-offset-4 hover:underline">
