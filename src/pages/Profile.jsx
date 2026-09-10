@@ -1,10 +1,13 @@
 import { useAuthActions } from "@convex-dev/auth/react";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 
 export default function Profile() {
-  const { signOut } = useAuthActions();
-  const navigate = useNavigate();
+    const { signOut } = useAuthActions();
+    const navigate = useNavigate();
+    const user = useQuery(api.users.getCurrentUser);
 
   const handleSignOut = async () => {
     await signOut();
