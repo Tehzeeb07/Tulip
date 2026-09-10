@@ -115,7 +115,7 @@ function LandingPage() {
             to="/signup"
             className="rounded-full bg-black px-6 py-2.5 text-sm text-white transition-transform duration-200 hover:scale-[1.03]"
           >
-            Begin Journey
+            Explore the Collection
           </Link>
         </header>
 
