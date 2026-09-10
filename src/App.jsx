@@ -1,5 +1,7 @@
-import { BrowserRouter, Navigate, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
@@ -69,21 +71,12 @@ function VideoBackground() {
         preload="auto"
         style={{ opacity }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
-      <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/85" />
     </div>
   );
 }
 
 function LandingPage() {
-  const menuItems = [
-    { label: "Home", active: true },
-    { label: "Collection" },
-    { label: "Our Story" },
-    { label: "Journal" },
-    { label: "Visit Us" },
-  ];
-
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-white text-black">
       <VideoBackground />
@@ -97,25 +90,11 @@ function LandingPage() {
             Tulip<sup className="text-[0.5em] align-super">®</sup>
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex">
-            {menuItems.map((item) => (
-              <a
-                key={item.label}
-                href="#"
-                className={`text-sm transition-colors hover:text-black ${
-                  item.active ? "text-black" : "text-[#6F6F6F]"
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
           <Link
-            to="/signup"
+            to="/login"
             className="rounded-full bg-black px-6 py-2.5 text-sm text-white transition-transform duration-200 hover:scale-[1.03]"
           >
-            Explore the Collection
+            Log In
           </Link>
         </header>
 
@@ -135,7 +114,7 @@ function LandingPage() {
             to="/signup"
             className="mt-12 animate-fade-rise-delay-2 rounded-full bg-black px-14 py-5 text-base text-white transition-transform duration-200 hover:scale-[1.03]"
           >
-            Begin Journey
+            Explore the Collection
           </Link>
 
           <p className="mt-6 text-sm text-[#6F6F6F]">
@@ -159,8 +138,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Navigate to="/" replace />} />
-        <Route path="/signup" element={<Navigate to="/" replace />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );
