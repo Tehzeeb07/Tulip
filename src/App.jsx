@@ -64,14 +64,14 @@ function VideoBackground() {
     <div className="absolute inset-0 z-0 overflow-hidden">
       <video
         ref={videoRef}
-        className="absolute left-0 right-0 bottom-0 top-[300px] h-[calc(100%-300px)] w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover"
         src={VIDEO_URL}
         muted
         playsInline
         preload="auto"
         style={{ opacity }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/85" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/60" />
     </div>
   );
 }
@@ -85,48 +85,52 @@ function LandingPage() {
         <header className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
           <Link
             to="/"
-            className="font-display text-3xl tracking-tight text-black transition-opacity hover:opacity-80"
+            className="text-3xl tracking-tight text-black transition-opacity hover:opacity-80"
+            style={{ fontFamily: "Georgia, serif" }}
           >
             Tulip<sup className="text-[0.5em] align-super">®</sup>
           </Link>
 
           <Link
             to="/login"
-            className="rounded-full bg-black px-6 py-2.5 text-sm text-white transition-transform duration-200 hover:scale-[1.03]"
+            className="rounded-full bg-[#FD5DA8] px-8 py-3 text-base font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
           >
             Log In
           </Link>
         </header>
 
         <main className="flex flex-col items-center justify-center px-6 pb-40 pt-[calc(8rem-75px)] text-center">
-          <h1 className="max-w-7xl animate-fade-rise font-display text-5xl font-normal leading-[0.95] tracking-[-2.46px] text-black sm:text-7xl md:text-8xl">
-            Flowers, <span className="text-[#6F6F6F] italic">arranged</span> like
-            it <span className="text-[#6F6F6F] italic">matters.</span>
+          <h1
+            className="max-w-7xl animate-fade-rise text-5xl font-normal leading-[0.95] tracking-[-2.46px] text-black sm:text-7xl md:text-8xl"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
+            Flowers, <span className="text-[#4A4A4A] italic">arranged</span> like
+            it <span className="text-[#4A4A4A] italic">matters.</span>
           </h1>
 
-          <p className="mt-8 max-w-2xl animate-fade-rise-delay text-base leading-relaxed text-[#6F6F6F] sm:text-lg">
-            Tulip composes every bouquet by hand, the day you collect it. No
-            pre-made stock, no wholesale shortcuts — just arrangements worth
-            building a moment around.
-          </p>
+          <h3 className="mt-8 max-w-2xl animate-fade-rise-delay text-lg leading-relaxed text-[#3A3A3A] sm:text-xl">
+            <b>Tulip composes every bouquet by hand, the day you collect it. No
+            pre-made stock, no wholesale shortcuts- just arrangements worth
+            building a moment around.</b>
+          </h3>
 
           <Link
             to="/signup"
-            className="mt-12 animate-fade-rise-delay-2 rounded-full bg-black px-14 py-5 text-base text-white transition-transform duration-200 hover:scale-[1.03]"
+                        className="mt-12 animate-fade-rise-delay-2 rounded-full bg-[#FD5DA8] px-16 py-6 text-xl font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
           >
             Explore the Collection
           </Link>
 
-          <p className="mt-6 text-sm text-[#6F6F6F]">
+          <h3 className="mt-6 text-base text-[#3A3A3A]">
             New here?{" "}
-            <Link to="/signup" className="text-black underline-offset-4 hover:underline">
+            <Link to="/signup" className="text-black font-medium underline-offset-4 hover:underline">
               Create an account
             </Link>{" "}
             or{" "}
-            <Link to="/login" className="text-black underline-offset-4 hover:underline">
+            <Link to="/login" className="text-black font-medium underline-offset-4 hover:underline">
               log in
             </Link>
-          </p>
+          </h3>
         </main>
       </div>
     </div>
