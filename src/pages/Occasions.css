@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+.occasions-page {
+  min-height: 100vh;
+  background: #FAF6EF;
+  font-family: 'Inter', sans-serif;
+  color: #1B1613;
+  padding: 70px 48px 100px;
+}
+
+.occasions-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.occasions-header {
+  margin-bottom: 48px;
+}
+
+.occasions-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.occasions-header p {
+  font-size: 17px;
+  color: rgba(27,22,19,0.6);
+}
+
+.occasions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.occasion-tile {
+  display: block;
+  text-decoration: none;
+  color: #1B1613;
+  border: 1px solid rgba(27,22,19,0.1);
+  overflow: hidden;
+}
+
+.tile-img {
+  aspect-ratio: 16/9;
+}
+
+.tile-weddings { background: linear-gradient(160deg, #C88B93, #6B1F2A); }
+.tile-everyday { background: linear-gradient(160deg, #D9CBAF, #8B6F47); }
+.tile-sympathy { background: linear-gradient(160deg, #C6CBB4, #43533F); }
+.tile-events { background: linear-gradient(160deg, #E7C7C2, #6B1F2A); }
+
+.tile-text {
+  padding: 22px 24px;
+}
+
+.tile-text h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.tile-text p {
+  font-size: 14px;
+  color: rgba(27,22,19,0.6);
+}
+
+@media (max-width: 700px) {
+  .occasions-page { padding: 50px 24px 80px; }
+  .occasions-grid { grid-template-columns: 1fr; }
+}
