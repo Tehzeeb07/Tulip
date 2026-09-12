@@ -85,7 +85,7 @@ export default function Bouquets() {
         ) : (
           <div className="bouquet-grid">
             {filtered.map((b) => (
-              <div className="bouquet-card" key={b.id}>
+              <Link to={`/product/${b.id}`} className="bouquet-card" key={b.id}>
                 <div className="bouquet-img-wrap">
                   {b.image ? (
                     <img src={b.image} alt={b.name} className="bouquet-img-real" />
