@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+.accessories-page {
+  min-height: 100vh;
+  background: #FAF6EF;
+  font-family: 'Inter', sans-serif;
+  color: #1B1613;
+  padding: 70px 48px 100px;
+}
+
+.accessories-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.accessories-header {
+  margin-bottom: 44px;
+}
+
+.accessories-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.accessories-header p {
+  font-size: 17px;
+  color: rgba(27,22,19,0.6);
+}
+
+.filters {
+  display: flex;
+  gap: 48px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(27,22,19,0.5);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  border: 1px solid rgba(27,22,19,0.2);
+  background: transparent;
+  color: #1B1613;
+  padding: 9px 20px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: #1B1613;
+}
+
+.filter-btn.active {
+  background: #6B1F2A;
+  border-color: #6B1F2A;
+  color: #FAF6EF;
+}
+
+.accessories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.acc-img {
+  aspect-ratio: 4/5;
+  max-width: 260px;
+  background: linear-gradient(150deg, #D9CBAF, #8B6F47);
+  margin-bottom: 18px;
+}
+
+.acc-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 23px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.acc-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: rgba(27,22,19,0.6);
+  max-width: 260px;
+}
+
+.no-results {
+  font-size: 16px;
+  color: rgba(27,22,19,0.55);
+  padding: 40px 0;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .accessories-page { padding: 50px 24px 80px; }
+  .accessories-grid { grid-template-columns: repeat(2, 1fr); }
+  .filters { gap: 28px; }
+  .acc-img, .acc-meta { max-width: 100%; }
+}
+
+@media (max-width: 560px) {
+  .accessories-grid { grid-template-columns: 1fr; }
+}
