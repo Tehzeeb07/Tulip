@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+.custom-order-page {
+  min-height: 100vh;
+  background: #FAF6EF;
+  font-family: 'Inter', sans-serif;
+  color: #1B1613;
+  padding: 70px 24px 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-order-wrap {
+  width: 100%;
+  max-width: 560px;
+}
+
+.custom-order-wrap h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: rgba(27,22,19,0.6);
+  margin-bottom: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+input, select, textarea {
+  padding: 13px 14px;
+  border: 1px solid rgba(27,22,19,0.2);
+  background: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #1B1613;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #1B1613;
+}
+
+button {
+  background: #6B1F2A;
+  color: #FAF6EF;
+  border: none;
+  padding: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: opacity 0.2s;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.error-text {
+  color: #6B1F2A;
+  font-size: 13px;
+}
+
+.success-box {
+  background: #FFFFFF;
+  border: 1px solid rgba(27,22,19,0.15);
+  padding: 30px;
+  font-size: 15px;
+  color: rgba(27,22,19,0.75);
+}
