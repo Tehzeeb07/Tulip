@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+.product-page {
+  min-height: 100vh;
+  background: #FAF6EF;
+  font-family: 'Inter', sans-serif;
+  color: #1B1613;
+  padding: 60px 48px 100px;
+}
+
+.product-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 14px;
+  color: rgba(27,22,19,0.6);
+  margin-bottom: 36px;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: #1B1613;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.product-img {
+  aspect-ratio: 4/5;
+  background: linear-gradient(150deg, #C88B93, #6B1F2A);
+}
+
+.product-tag {
+  display: inline-block;
+  font-size: 13px;
+  color: #6B1F2A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+.product-info h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.product-desc {
+  font-size: 16px;
+  color: rgba(27,22,19,0.65);
+  margin-bottom: 14px;
+}
+
+.product-price {
+  font-size: 24px;
+  font-family: 'Fraunces', serif;
+  margin-bottom: 32px;
+}
+
+.section-label {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(27,22,19,0.5);
+  margin-bottom: 12px;
+}
+
+.size-section {
+  margin-bottom: 32px;
+}
+
+.size-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.size-btn {
+  border: 1px solid rgba(27,22,19,0.2);
+  background: transparent;
+  color: #1B1613;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.size-btn:hover {
+  border-color: #1B1613;
+}
+
+.size-btn.active {
+  background: #6B1F2A;
+  border-color: #6B1F2A;
+  color: #FAF6EF;
+}
+
+.care-section {
+  margin-bottom: 36px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(27,22,19,0.12);
+}
+
+.care-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(27,22,19,0.7);
+}
+
+.visit-note {
+  font-size: 14px;
+  color: rgba(27,22,19,0.55);
+  padding: 18px 20px;
+  background: #FFFFFF;
+  border: 1px solid rgba(27,22,19,0.1);
+}
+
+.not-found {
+  font-size: 16px;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.not-found a {
+  color: #6B1F2A;
+}
+
+@media (max-width: 800px) {
+  .product-page { padding: 40px 24px 80px; }
+  .product-grid { grid-template-columns: 1fr; gap: 32px; }
+  .product-info h1 { font-size: 32px; }
+}
