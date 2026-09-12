@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./Bouquets.css";
 
-const ALL_BOUQUETS = [
-  { id: 1, name: "The Marchesa", desc: "Garden rose, ranunculus", price: 185, occasion: "Wedding" },
-  { id: 2, name: "Amber Field", desc: "Dahlia, dried grasses", price: 140, occasion: "Everyday" },
-  { id: 3, name: "Quiet Grove", desc: "Eucalyptus, white anemone", price: 120, occasion: "Sympathy" },
-  { id: 4, name: "Vermeil", desc: "Burgundy peony, thistle", price: 210, occasion: "Wedding" },
-  { id: 5, name: "Wheatlight", desc: "Sunflower, wheat, cosmos", price: 115, occasion: "Everyday" },
-  { id: 6, name: "Moss & Stem", desc: "Orchid, moss, fern", price: 225, occasion: "Events" },
+const INITIAL_BOUQUETS = [
+  { id: 1, name: "The Marchesa", desc: "Garden rose, ranunculus", price: 185, occasion: "Wedding", image: null },
+  { id: 2, name: "Amber Field", desc: "Dahlia, dried grasses", price: 140, occasion: "Everyday", image: null },
+  { id: 3, name: "Quiet Grove", desc: "Eucalyptus, white anemone", price: 120, occasion: "Sympathy", image: null },
+  { id: 4, name: "Vermeil", desc: "Burgundy peony, thistle", price: 210, occasion: "Wedding", image: null },
+  { id: 5, name: "Wheatlight", desc: "Sunflower, wheat, cosmos", price: 115, occasion: "Everyday", image: null },
+  { id: 6, name: "Moss & Stem", desc: "Orchid, moss, fern", price: 225, occasion: "Events", image: null },
 ];
 
 const OCCASIONS = ["All", "Wedding", "Everyday", "Sympathy", "Events"];
@@ -19,10 +19,20 @@ const PRICE_RANGES = [
 ];
 
 export default function Bouquets() {
+  const [bouquets, setBouquets] = useState(INITIAL_BOUQUETS);
   const [occasion, setOccasion] = useState("All");
   const [priceRange, setPriceRange] = useState(PRICE_RANGES[0]);
 
-  const filtered = ALL_BOUQUETS.filter((b) => {
+  const handleImageChange = (id, e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setBouquets((prev) =>
+      prev.map((b) => (b.id === id ? { ...b, image: url } : b))
+    );
+  };
+
+  const filtered = bouquets.filter((b) => {
     const matchesOccasion = occasion === "All" || b.occasion === occasion;
     const matchesPrice = b.price >= priceRange.min && b.price <= priceRange.max;
     return matchesOccasion && matchesPrice;
@@ -74,7 +84,21 @@ export default function Bouquets() {
           <div className="bouquet-grid">
             {filtered.map((b) => (
               <div className="bouquet-card" key={b.id}>
-                <div className="bouquet-img" />
+                <label className="bouquet-img-wrap">
+                  {b.image ? (
+                    <img src={b.image} alt={b.name} className="bouquet-img-real" />
+                  ) : (
+                    <div className="bouquet-img-placeholder">
+                      <span>+ Add photo</span>
+                    </div>
+                  )}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handleImageChange(b.id, e)}
+                    style={{ display: "none" }}
+                  />
+                </label>
                 <h3>{b.name}</h3>
                 <div className="bouquet-meta">
                   <span>{b.desc}</span>
