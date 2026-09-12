@@ -98,7 +98,7 @@ export default function Bouquets() {
                   <span>{b.desc}</span>
                   <span>${b.price}</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}
