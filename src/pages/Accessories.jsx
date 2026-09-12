@@ -1,15 +1,9 @@
-import { useState } from "react";
-import "./Accessories.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { PRODUCTS } from "../data/products";
+import "./Accessories.css";
 
-const ITEMS = [
-  { id: 1, name: "Hand-blown Vase", desc: "Ceramic, amber glaze", price: 65, category: "Vessels" },
-  { id: 2, name: "Linen Wrap Set", desc: "Natural linen, waxed twine", price: 22, category: "Wrapping" },
-  { id: 3, name: "Candle & Bouquet Set", desc: "Soy candle, seasonal blooms", price: 95, category: "Gift Sets" },
-  { id: 4, name: "Letterpress Card", desc: "Blank, hand-inked border", price: 8, category: "Cards" },
-  { id: 5, name: "Ceramic Bud Vase", desc: "Matte white, small form", price: 38, category: "Vessels" },
-  { id: 6, name: "Chocolate & Bloom Box", desc: "Local chocolatier pairing", price: 78, category: "Gift Sets" },
-];
+const ITEMS = PRODUCTS.filter((p) => p.type === "accessory");
 
 const CATEGORIES = ["All", "Vessels", "Wrapping", "Gift Sets", "Cards"];
 const PRICE_RANGES = [
@@ -24,7 +18,7 @@ export default function Accessories() {
   const [priceRange, setPriceRange] = useState(PRICE_RANGES[0]);
 
   const filtered = ITEMS.filter((item) => {
-    const matchesCategory = category === "All" || item.category === category;
+    const matchesCategory = category === "All" || item.occasion === category;
     const matchesPrice = item.price >= priceRange.min && item.price <= priceRange.max;
     return matchesCategory && matchesPrice;
   });
@@ -74,14 +68,14 @@ export default function Accessories() {
         ) : (
           <div className="accessories-grid">
             {filtered.map((item) => (
-              <div className="acc-card" key={item.id}>
+              <Link to={`/product/${item.id}`} className="acc-card" key={item.id}>
                 <div className="acc-img" />
                 <h3>{item.name}</h3>
                 <div className="acc-meta">
                   <span>{item.desc}</span>
                   <span>${item.price}</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}

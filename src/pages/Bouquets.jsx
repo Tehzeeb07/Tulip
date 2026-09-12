@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 
 const INITIAL_BOUQUETS = [
-  { id: 1, name: "The Marchesa", desc: "Garden rose, ranunculus", price: 185, occasion: "Wedding", image: null },
-  { id: 2, name: "Amber Field", desc: "Dahlia, dried grasses", price: 140, occasion: "Everyday", image: null },
-  { id: 3, name: "Quiet Grove", desc: "Eucalyptus, white anemone", price: 120, occasion: "Sympathy", image: null },
-  { id: 4, name: "Vermeil", desc: "Burgundy peony, thistle", price: 210, occasion: "Wedding", image: null },
-  { id: 5, name: "Wheatlight", desc: "Sunflower, wheat, cosmos", price: 115, occasion: "Everyday", image: null },
-  { id: 6, name: "Moss & Stem", desc: "Orchid, moss, fern", price: 225, occasion: "Events", image: null },
+  { id: "marchesa", name: "The Marchesa", desc: "Garden rose, ranunculus", price: 185, occasion: "Wedding", image: null },
+  { id: "amber-field", name: "Amber Field", desc: "Dahlia, dried grasses", price: 140, occasion: "Everyday", image: null },
+  { id: "quiet-grove", name: "Quiet Grove", desc: "Eucalyptus, white anemone", price: 120, occasion: "Sympathy", image: null },
+  { id: "vermeil", name: "Vermeil", desc: "Burgundy peony, thistle", price: 210, occasion: "Wedding", image: null },
+  { id: "wheatlight", name: "Wheatlight", desc: "Sunflower, wheat, cosmos", price: 115, occasion: "Everyday", image: null },
+  { id: "moss-stem", name: "Moss & Stem", desc: "Orchid, moss, fern", price: 225, occasion: "Events", image: null },
 ];
 
 const OCCASIONS = ["All", "Wedding", "Everyday", "Sympathy", "Events"];
