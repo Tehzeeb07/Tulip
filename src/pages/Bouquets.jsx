@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./Bouquets.css";
+import { Link } from "react-router-dom";
+
 
 const INITIAL_BOUQUETS = [
   { id: 1, name: "The Marchesa", desc: "Garden rose, ranunculus", price: 185, occasion: "Wedding", image: null },

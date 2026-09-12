@@ -5,6 +5,7 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Bouquets from "./pages/Bouquets";
 import Accessories from "./pages/Accessories";
+import ProductDetail from "./pages/ProductDetail";
 
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
@@ -150,6 +151,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/bouquets" element={<Bouquets />} />
         <Route path="/accessories" element={<Accessories />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
     </BrowserRouter>
   );

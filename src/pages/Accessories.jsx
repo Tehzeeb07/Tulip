@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Accessories.css";
+import { Link } from "react-router-dom";
 
 const ITEMS = [
   { id: 1, name: "Hand-blown Vase", desc: "Ceramic, amber glaze", price: 65, category: "Vessels" },
