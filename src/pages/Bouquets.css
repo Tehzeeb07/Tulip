@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+.bouquets-page {
+  min-height: 100vh;
+  background: #FAF6EF;
+  font-family: 'Inter', sans-serif;
+  color: #1B1613;
+  padding: 70px 48px 100px;
+}
+
+.bouquets-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bouquets-header {
+  margin-bottom: 40px;
+}
+
+.bouquets-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.bouquets-header p {
+  font-size: 15px;
+  color: rgba(27,22,19,0.6);
+}
+
+.filters {
+  display: flex;
+  gap: 48px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(27,22,19,0.5);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  border: 1px solid rgba(27,22,19,0.2);
+  background: transparent;
+  color: #1B1613;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: #1B1613;
+}
+
+.filter-btn.active {
+  background: #6B1F2A;
+  border-color: #6B1F2A;
+  color: #FAF6EF;
+}
+
+.bouquet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.bouquet-card .bouquet-img {
+  aspect-ratio: 4/5;
+  background: linear-gradient(150deg, #C88B93, #6B1F2A);
+  margin-bottom: 18px;
+}
+
+.bouquet-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.bouquet-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgba(27,22,19,0.55);
+}
+
+.no-results {
+  font-size: 14px;
+  color: rgba(27,22,19,0.55);
+  padding: 40px 0;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .bouquets-page { padding: 50px 24px 80px; }
+  .bouquet-grid { grid-template-columns: repeat(2, 1fr); }
+  .filters { gap: 28px; }
+}
+
+@media (max-width: 560px) {
+  .bouquet-grid { grid-template-columns: 1fr; }
+}
