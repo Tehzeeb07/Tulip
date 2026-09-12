@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+.occasion-detail-page {
+  min-height: 100vh;
+  background: #FAF6EF;
+  font-family: 'Inter', sans-serif;
+  color: #1B1613;
+  padding: 60px 48px 100px;
+}
+
+.occasion-detail-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 14px;
+  color: rgba(27,22,19,0.6);
+  margin-bottom: 36px;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: #1B1613;
+}
+
+.occasion-detail-header {
+  margin-bottom: 44px;
+}
+
+.occasion-detail-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.occasion-detail-header p {
+  font-size: 17px;
+  color: rgba(27,22,19,0.6);
+}
+
+.picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.pick-card {
+  display: block;
+  text-decoration: none;
+  color: #1B1613;
+}
+
+.pick-img {
+  aspect-ratio: 4/5;
+  max-width: 260px;
+  background: linear-gradient(150deg, #C88B93, #6B1F2A);
+  margin-bottom: 18px;
+}
+
+.pick-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 23px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.pick-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: rgba(27,22,19,0.6);
+  max-width: 260px;
+}
+
+.no-results {
+  font-size: 16px;
+  color: rgba(27,22,19,0.55);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.not-found {
+  font-size: 16px;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.not-found a {
+  color: #6B1F2A;
+}
+
+@media (max-width: 900px) {
+  .occasion-detail-page { padding: 40px 24px 80px; }
+  .picks-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .picks-grid { grid-template-columns: 1fr; }
+}
