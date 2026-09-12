@@ -3,7 +3,9 @@ import { Resend } from "@convex-dev/resend";
 import { action } from "./_generated/server";
 import { v } from "convex/values";
 
-export const resend = new Resend(components.resend, {});
+export const resend = new Resend(components.resend, {
+  testMode: false,
+});
 
 export const sendCustomOrderRequest = action({
   args: {
