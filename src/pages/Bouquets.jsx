@@ -84,21 +84,13 @@ export default function Bouquets() {
           <div className="bouquet-grid">
             {filtered.map((b) => (
               <div className="bouquet-card" key={b.id}>
-                <label className="bouquet-img-wrap">
+                <div className="bouquet-img-wrap">
                   {b.image ? (
                     <img src={b.image} alt={b.name} className="bouquet-img-real" />
                   ) : (
-                    <div className="bouquet-img-placeholder">
-                      <span>+ Add photo</span>
-                    </div>
+                    <div className="bouquet-img-placeholder" />
                   )}
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => handleImageChange(b.id, e)}
-                    style={{ display: "none" }}
-                  />
-                </label>
+                </div>
                 <h3>{b.name}</h3>
                 <div className="bouquet-meta">
                   <span>{b.desc}</span>
