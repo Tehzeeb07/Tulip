@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
 
 .reviews-page {
   min-height: 100vh;
-  background: #FAF6EF;
+  background: #FDF8F5;
   font-family: 'Inter', sans-serif;
-  color: #1B1613;
-  padding: 70px 48px 100px;
+  color: #443025;
+  padding: 80px 60px 120px;
 }
 
 .reviews-wrap {
@@ -14,76 +14,75 @@
 }
 
 .reviews-header {
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
 .reviews-header h1 {
   font-family: 'Fraunces', serif;
-  font-size: 48px;
-  font-weight: 400;
-  margin-bottom: 10px;
+  font-size: 60px;
+  font-weight: 500;
+  margin-bottom: 14px;
 }
 
 .reviews-header p {
-  font-size: 17px;
-  color: rgba(27,22,19,0.6);
+  font-size: 20px;
+  color: rgba(68,48,37,0.65);
 }
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
 }
 
 .review-card {
   background: #FFFFFF;
-  border: 1px solid rgba(27,22,19,0.1);
-  padding: 28px;
+  border: 1px solid rgba(68,48,37,0.1);
+  padding: 40px;
 }
 
 .stars {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .star {
-  font-size: 15px;
-  color: rgba(27,22,19,0.2);
+  font-size: 20px;
+  color: rgba(68,48,37,0.2);
 }
 
 .star.filled {
-  color: #6B1F2A;
+  color: #FF6FA5;
 }
 
 .quote {
-  font-size: 15px;
+  font-size: 19px;
   line-height: 1.6;
-  color: rgba(27,22,19,0.75);
-  margin-bottom: 22px;
-  min-height: 90px;
+  font-weight: 500;
+  color: #443025;
+  margin-bottom: 28px;
+  min-height: 100px;
 }
 
 .review-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 16px;
-  border-top: 1px solid rgba(27,22,19,0.1);
-  font-size: 14px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(68,48,37,0.1);
+  font-size: 16px;
 }
 
 .review-name {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .review-occasion {
-  color: rgba(27,22,19,0.5);
+  color: rgba(68,48,37,0.55);
+  font-weight: 500;
 }
 
 @media (max-width: 900px) {
   .reviews-page { padding: 50px 24px 80px; }
-  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 560px) {
   .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-header h1 { font-size: 42px; }
 }
