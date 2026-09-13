@@ -1,46 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
 
 .custom-order-page {
   min-height: 100vh;
-  background: #FAF6EF;
+  background: #FDF8F5;
   font-family: 'Inter', sans-serif;
-  color: #1B1613;
-  padding: 70px 24px 100px;
+  color: #443025;
+  padding: 80px 24px 120px;
   display: flex;
   justify-content: center;
 }
 
 .custom-order-wrap {
   width: 100%;
-  max-width: 560px;
+  max-width: 600px;
 }
 
 .custom-order-wrap h1 {
   font-family: 'Fraunces', serif;
-  font-size: 40px;
-  font-weight: 400;
-  margin-bottom: 10px;
+  font-size: 46px;
+  font-weight: 500;
+  margin-bottom: 12px;
 }
 
 .subtitle {
-  font-size: 16px;
-  color: rgba(27,22,19,0.6);
-  margin-bottom: 40px;
+  font-size: 18px;
+  color: rgba(68,48,37,0.65);
+  margin-bottom: 44px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 input, select, textarea {
-  padding: 13px 14px;
-  border: 1px solid rgba(27,22,19,0.2);
+  padding: 15px 16px;
+  border: 1px solid rgba(68,48,37,0.25);
   background: #FFFFFF;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: #1B1613;
+  font-size: 16px;
+  color: #443025;
 }
 
 textarea {
@@ -49,17 +49,18 @@ textarea {
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: #1B1613;
+  border-color: #FF6FA5;
 }
 
 button {
-  background: #6B1F2A;
-  color: #FAF6EF;
+  background: #FF6FA5;
+  color: #FDF8F5;
   border: none;
-  padding: 15px;
-  font-size: 14px;
+  padding: 17px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 6px;
+  margin-top: 8px;
   transition: opacity 0.2s;
 }
 
@@ -73,14 +74,16 @@ button:hover:not(:disabled) {
 }
 
 .error-text {
-  color: #6B1F2A;
-  font-size: 13px;
+  color: #FF6FA5;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .success-box {
   background: #FFFFFF;
-  border: 1px solid rgba(27,22,19,0.15);
-  padding: 30px;
-  font-size: 15px;
-  color: rgba(27,22,19,0.75);
+  border: 1px solid rgba(68,48,37,0.15);
+  padding: 34px;
+  font-size: 17px;
+  font-weight: 500;
+  color: rgba(68,48,37,0.8);
 }
