@@ -56,8 +56,9 @@
 
 .pick-img {
   aspect-ratio: 4/5;
+  max-width: 220px;
   background: linear-gradient(150deg, #EC9C9D, #7F5836);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .pick-card h3 {
@@ -73,6 +74,7 @@
   font-size: 16px;
   font-weight: 500;
   color: rgba(68,48,37,0.65);
+  max-width: 220px;
 }
 
 .no-results {
@@ -95,10 +97,13 @@
 
 @media (max-width: 900px) {
   .occasion-detail-page { padding: 40px 24px 80px; }
-  .picks-grid { grid-template-columns: repeat(2, 1fr); }
-  .occasion-detail-header h1 { font-size: 42px; }
-}
+    .picks-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
 
 @media (max-width: 560px) {
   .picks-grid { grid-template-columns: 1fr; }
 }
+};
