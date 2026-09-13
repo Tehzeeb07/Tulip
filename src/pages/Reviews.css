@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+.reviews-page {
+  min-height: 100vh;
+  background: #FAF6EF;
+  font-family: 'Inter', sans-serif;
+  color: #1B1613;
+  padding: 70px 48px 100px;
+}
+
+.reviews-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.reviews-header {
+  margin-bottom: 48px;
+}
+
+.reviews-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.reviews-header p {
+  font-size: 17px;
+  color: rgba(27,22,19,0.6);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.review-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(27,22,19,0.1);
+  padding: 28px;
+}
+
+.stars {
+  margin-bottom: 16px;
+}
+
+.star {
+  font-size: 15px;
+  color: rgba(27,22,19,0.2);
+}
+
+.star.filled {
+  color: #6B1F2A;
+}
+
+.quote {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(27,22,19,0.75);
+  margin-bottom: 22px;
+  min-height: 90px;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(27,22,19,0.1);
+  font-size: 14px;
+}
+
+.review-name {
+  font-weight: 500;
+}
+
+.review-occasion {
+  color: rgba(27,22,19,0.5);
+}
+
+@media (max-width: 900px) {
+  .reviews-page { padding: 50px 24px 80px; }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+}
