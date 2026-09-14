@@ -11,18 +11,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const user = useQuery(api.users.getCurrentUser);
   const [activeTab, setActiveTab] = useState("account");
-  const [avatar, setAvatar] = useState(null);
-  const inputRef = useRef(null);
-  const objectUrlRef = useRef(null);
-
-  useEffect(() => {
-    // cleanup previously created object URLs
-    return () => {
-      if (objectUrlRef.current) {
-        URL.revokeObjectURL(objectUrlRef.current);
-      }
-    };
-  }, []);
+  const [avatar, setAvatar] = useState(() => localStorage.getItem("tulip_avatar") || null);
 
   const handleSignOut = async () => {
     await signOut();
@@ -185,7 +174,7 @@ export default function Profile() {
                       />
                       <div className="fav-info">
                         <h3>{item.name}</h3>
-                        <span>{item.price}</span>
+                        <span>${item.price}</span>
                       </div>
                     </article>
                   ))}
