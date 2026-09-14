@@ -92,12 +92,6 @@ export default function Profile() {
           <h1 className="hero-name">{displayName}</h1>
           <div className="hero-handle">@{user?.username ?? "username"}</div>
 
-          <ul className="hero-stats">
-            <li>
-              <span className="num">{savedCount}</span>
-              <span className="lbl">Saved</span>
-            </li>
-          </ul>
         </div>
       </div>
 
@@ -110,7 +104,6 @@ export default function Profile() {
 
           <div className="tab-actions">
             <button className="edit-btn">Edit Profile</button>
-            <button className="coin-btn" onClick={() => null} aria-hidden>Rewards</button>
           </div>
         </div>
       </div>
@@ -150,7 +143,7 @@ export default function Profile() {
             <div className="glass about-panel">
               <h2 className="section-title">About</h2>
               <div className="bio">
-                {user?.bio ?? "Add a short description about your shop, featured collections, or ordering details."}
+                {user?.bio ?? "Bringing together flowers, delicate accessories, and little details that make moments special."}
               </div>
 
               <div className="meta-grid">
