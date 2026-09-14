@@ -2,11 +2,16 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { PRODUCTS } from "../data/products";
 import "./ProductDetail.css";
+import { useQuery, useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const product = PRODUCTS.find((p) => p.id === id);
   const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || "");
+  const favorites = useQuery(api.favorites.getFavorites) || [];
+  const toggleFavorite = useMutation(api.favorites.toggleFavorite);
+  const isFavorited = favorites.includes(product?.id);
 
   if (!product) {
     return (
@@ -36,6 +41,12 @@ export default function ProductDetail() {
             <h1>{product.name}</h1>
             <p className="product-desc">{product.desc}</p>
             <p className="product-price">${product.price}</p>
+            <button
+              className="save-btn"
+              onClick={() => toggleFavorite({ productId: product.id })}
+            >
+              {isFavorited ? "♥ Saved to Favorites" : "♡ Save to Favorites"}
+            </button>
 
             {product.sizes && product.sizes.length > 0 && (
               <div className="size-section">
