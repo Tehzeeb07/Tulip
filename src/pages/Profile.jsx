@@ -12,6 +12,7 @@ export default function Profile() {
   const user = useQuery(api.users.getCurrentUser);
   const [activeTab, setActiveTab] = useState("account");
   const [avatar, setAvatar] = useState(() => localStorage.getItem("tulip_avatar") || null);
+  const inputRef = useRef(null);
 
   const handleSignOut = async () => {
     await signOut();
