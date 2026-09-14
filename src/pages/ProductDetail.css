@@ -22,6 +22,24 @@
   text-decoration: none;
 }
 
+.save-btn {
+  border: 1px solid rgba(68, 48, 37, 0.25);
+  background: transparent;
+  color: #443025;
+  padding: 13px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  margin-bottom: 32px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.save-btn:hover {
+  border-color: #FF6FA5;
+  color: #FF6FA5;
+}
+
 .back-link:hover {
   color: #443025;
 }
