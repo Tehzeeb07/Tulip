@@ -4,6 +4,7 @@ import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
+import { PRODUCTS } from "../data/products";
 
 export default function Profile() {
   const { signOut } = useAuthActions();
@@ -49,12 +50,10 @@ export default function Profile() {
     }
   };
 
-  // Temporary favorites; replace with real data when available
-  const favorites = [
-    { id: 1, name: "The Marchesa", price: "$185" },
-    { id: 2, name: "Vermeil", price: "$210" },
-    { id: 3, name: "Moss & Stem", price: "$225" },
-  ];
+  const favoriteIds = useQuery(api.favorites.getFavorites) || [];
+  const favorites = favoriteIds
+    .map((id) => PRODUCTS.find((p) => p.id === id))
+    .filter(Boolean);
 
   const initial = user?.username ? user.username[0].toUpperCase() : "?";
 
