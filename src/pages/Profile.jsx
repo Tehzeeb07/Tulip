@@ -20,13 +20,14 @@ export default function Profile() {
 
   const handleAvatarChange = (e) => {
     const file = e?.target?.files?.[0];
-    if (file) {
-      if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
-      const url = URL.createObjectURL(file);
-      objectUrlRef.current = url;
-      setAvatar(url);
-      // TODO: upload the file to persistent storage/backend here
-    }
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result;
+      localStorage.setItem("tulip_avatar", base64);
+      setAvatar(base64);
+    };
+    reader.readAsDataURL(file);
   };
 
   const openFilePicker = () => {
