@@ -39,7 +39,13 @@ export default function Blog() {
             <div className="short-modal-content" onClick={(e) => e.stopPropagation()}>
               <button className="close-btn" onClick={() => setActiveShort(null)}>✕</button>
               {activeShort.videoUrl ? (
-                <video src={activeShort.videoUrl} controls autoPlay className="short-video" />
+                <iframe
+                  src={`${activeShort.videoUrl}?autoplay=1&mute=1`}
+                  className="short-video"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  title={activeShort.title}
+                />
               ) : (
                 <div className="short-placeholder">
                   <p>Video coming soon: {activeShort.title}</p>

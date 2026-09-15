@@ -56,3 +56,25 @@ Grouping smaller bud vases along a mantel or shelf often reads as more intention
 Lastly, let the flowers breathe — an arrangement that's slightly loose and asymmetrical almost always looks more natural than one arranged too tightly.`,
   },
 ];
+
+export const BLOG_POSTS = [
+  {
+    slug: "extending-bouquet-life",
+    title: "Five Ways to Make Your Bouquet Last Longer",
+    excerpt: "Small habits that add days, sometimes a full week, to a fresh arrangement.",
+    category: "Care Basics",
+    readTime: "4 min read",
+    image: null,
+    content: `Cut flowers start declining the moment they're picked...`,
+  },
+  {
+    slug: "choosing-flowers-by-season",
+    title: "Choosing Flowers by Season",
+    excerpt: "Why an in-season bouquet looks better and lasts longer than an imported one.",
+    category: "Styling",
+    readTime: "5 min read",
+    image: null,
+    content: `Flowers grown in season...`,
+  },
+  // ...same for the other two posts, just add image: null to each
+];
