@@ -195,3 +195,10 @@
   font-size: 22px;
   cursor: pointer;
 }
+
+.blog-img-real {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  margin-bottom: 20px;
+  display: block;
