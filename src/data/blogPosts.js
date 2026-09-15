@@ -5,7 +5,7 @@ export const BLOG_POSTS = [
     excerpt: "Small habits that add days, sometimes a full week, to a fresh arrangement.",
     category: "Care Basics",
     readTime: "4 min read",
-    image: null,
+    image: "./bou.png",
     content: `Cut flowers start declining the moment they're picked, but a few habits slow that down considerably. Re-cut stems at an angle every two to three days — this keeps the water-absorbing surface fresh and prevents blockages from sealing over.
 
 Change the water every other day, and rinse the vase each time rather than just topping it off. Bacteria buildup in old water is one of the fastest ways to shorten a bouquet's life.
