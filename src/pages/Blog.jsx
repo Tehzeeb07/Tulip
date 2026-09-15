@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BLOG_POSTS } from "../data/blogPosts";
+import { CARE_SHORTS } from "../data/careShorts";
 import "./Blog.css";
 
 export default function Blog() {
+  const [activeShort, setActiveShort] = useState(null);
+
   return (
     <div className="blog-page">
       <div className="blog-wrap">
@@ -10,6 +14,40 @@ export default function Blog() {
           <h1>Flower Care Journal</h1>
           <p>Care tips, styling notes, and seasonal guidance from the studio.</p>
         </div>
+
+        <div className="shorts-section">
+          <span className="shorts-label">Quick Care Clips</span>
+          <div className="shorts-row">
+            {CARE_SHORTS.map((short) => (
+              <div
+                className="short-card"
+                key={short.id}
+                onClick={() => setActiveShort(short)}
+              >
+                <div className="short-thumb">
+                  <span className="play-icon">▶</span>
+                </div>
+                <h4>{short.title}</h4>
+                <span className="short-duration">{short.duration}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {activeShort && (
+          <div className="short-modal" onClick={() => setActiveShort(null)}>
+            <div className="short-modal-content" onClick={(e) => e.stopPropagation()}>
+              <button className="close-btn" onClick={() => setActiveShort(null)}>✕</button>
+              {activeShort.videoUrl ? (
+                <video src={activeShort.videoUrl} controls autoPlay className="short-video" />
+              ) : (
+                <div className="short-placeholder">
+                  <p>Video coming soon: {activeShort.title}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         <div className="blog-grid">
           {BLOG_POSTS.map((post) => (
