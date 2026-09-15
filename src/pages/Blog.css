@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+.blog-page {
+  min-height: 100vh;
+  background: #FDF8F5;
+  font-family: 'Inter', sans-serif;
+  color: #443025;
+  padding: 80px 60px 120px;
+}
+
+.blog-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blog-header {
+  margin-bottom: 52px;
+}
+
+.blog-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 58px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.blog-header p {
+  font-size: 19px;
+  color: rgba(68,48,37,0.65);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+}
+
+.blog-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-img {
+  aspect-ratio: 16/10;
+  background: linear-gradient(150deg, #EC9C9D, #7F5836);
+  margin-bottom: 20px;
+}
+
+.blog-category {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B1F2A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.blog-card h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.blog-card p {
+  font-size: 16px;
+  color: rgba(68,48,37,0.65);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.blog-readtime {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(68,48,37,0.5);
+}
+
+@media (max-width: 900px) {
+  .blog-page { padding: 50px 24px 80px; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-header h1 { font-size: 42px; }
+}
