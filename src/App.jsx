@@ -10,6 +10,8 @@ import Occasions from "./pages/Occasions";
 import OccasionDetail from "./pages/OccasionDetail";
 import CustomOrder from "./pages/CustomOrder";
 import Reviews from "./pages/Reviews";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
@@ -160,6 +162,8 @@ function App() {
         <Route path="/occasions/:slug" element={<OccasionDetail />} />
         <Route path="/custom-order" element={<CustomOrder />} />
         <Route path="/reviews" element={<Reviews />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </BrowserRouter>
   );
