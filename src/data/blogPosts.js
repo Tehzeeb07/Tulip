@@ -35,7 +35,7 @@ Asking your florist what's in season is often the simplest way to get a better b
     excerpt: "Dried florals need almost no maintenance — but a few things still matter.",
     category: "Care Basics",
     readTime: "3 min read",
-    image: null,
+    image: "./images/dry.png",
     content: `Dried arrangements need no water at all, which makes them low-maintenance, but they aren't entirely maintenance-free. Humidity is the biggest threat — keep dried florals away from bathrooms, steamy kitchens, and open windows in damp weather, as moisture causes mold and mildew.
 
 Direct sunlight will fade color over time, so a spot with soft, indirect light keeps the arrangement's tones intact longest.
@@ -50,7 +50,7 @@ With the right placement, a well-made dried arrangement can hold its shape and c
     excerpt: "A few placement tips that make any bouquet feel more considered.",
     category: "Styling",
     readTime: "4 min read",
-    image: null,
+    image: "./images/home.png",
     content: `Where you place a bouquet changes how it reads in a room as much as the arrangement itself. A single striking piece on a dining table draws the eye immediately — resist the urge to add too much else nearby.
 
 Vase height matters more than people expect. A too-tall vase can swallow a smaller bouquet, while a too-short one can make a full arrangement look cramped. Aim for the vase to be roughly a third of the total height.
