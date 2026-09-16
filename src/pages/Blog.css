@@ -114,12 +114,15 @@
 .short-thumb {
   aspect-ratio: 9/16;
   background: linear-gradient(160deg, #EC9C9D, #6B1F2A);
+  background-size: cover;
+  background-position: center;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
   transition: transform 0.2s;
+  position: relative;
 }
 
 .short-card:hover .short-thumb {
