@@ -27,7 +27,11 @@ export default function BlogPost() {
         <h1>{post.title}</h1>
         <span className="blogpost-readtime">{post.readTime}</span>
 
-        <div className="blogpost-img" />
+        {post.image ? (
+          <img src={post.image} alt={post.title} className="blogpost-img-real" />
+        ) : (
+          <div className="blogpost-img" />
+        )}
 
         <div className="blogpost-body">
           {post.content.split("\n\n").map((para, i) => (
