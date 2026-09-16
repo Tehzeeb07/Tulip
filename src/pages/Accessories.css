@@ -82,11 +82,79 @@
   gap: 32px;
 }
 
-.acc-img {
+.acc-img-wrap {
+  position: relative;
+  width: 100%;
   aspect-ratio: 4/5;
-  max-width: 260px;
-  background: linear-gradient(150deg, #D9CBAF, #8B6F47);
+  border-radius: 14px;
+  overflow: hidden;
   margin-bottom: 18px;
+  background: #f0ede8;
+}
+
+.card-shuffle-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.2s, background 0.2s;
+  z-index: 2;
+}
+
+.card-shuffle-btn:hover {
+  opacity: 1;
+  background: #ffffff;
+  transform: scale(1.1);
+}
+
+.card-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  background: rgba(27, 22, 19, 0.6);
+  padding: 4px 8px;
+  border-radius: 9999px;
+  z-index: 2;
+}
+
+.card-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.card-dot.active {
+  background: #ffffff;
+  transform: scale(1.25);
+}
+
+.acc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.acc-card:hover .acc-img {
+  transform: scale(1.04);
 }
 
 .acc-card h3 {

@@ -3,6 +3,7 @@ import { useAuthActions } from "@convex-dev/auth/react";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import "./Profile.css";
 
 /*
@@ -58,7 +59,9 @@ export default function Profile() {
   ];
 
   return (
-    <div className="tulip-profile">
+    <>
+      <Navbar />
+      <div className="tulip-profile">
       <div
         className="hero"
         style={{
@@ -175,5 +178,6 @@ export default function Profile() {
         </section>
       </main>
     </div>
+    </>
   );
 }

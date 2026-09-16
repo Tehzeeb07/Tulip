@@ -29,6 +29,47 @@
   color: rgba(27,22,19,0.6);
 }
 
+.catalog-quick-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.quick-nav-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(27, 22, 19, 0.5);
+  margin-right: 2px;
+}
+
+.quick-nav-pill {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1B1613;
+  background: #ffffff;
+  border: 1px solid rgba(27, 22, 19, 0.15);
+  padding: 7px 16px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.quick-nav-pill:hover {
+  border-color: #FD5DA8;
+  color: #FD5DA8;
+  transform: translateY(-1px);
+}
+
+.quick-nav-pill.active {
+  background: #FD5DA8;
+  color: #ffffff;
+  border-color: #FD5DA8;
+}
+
 .filters {
   display: flex;
   gap: 48px;
@@ -83,17 +124,78 @@
 }
 
 .bouquet-img-wrap {
-  display: block;
-  cursor: pointer;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 14px;
+  overflow: hidden;
   margin-bottom: 18px;
-  max-width: 260px;
+  background: #f0ede8;
 }
 
 .bouquet-img-real {
   width: 100%;
-  aspect-ratio: 4/5;
+  height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+.bouquet-card:hover .bouquet-img-real {
+  transform: scale(1.04);
+}
+
+.card-shuffle-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.2s, background 0.2s;
+  z-index: 2;
+}
+
+.card-shuffle-btn:hover {
+  opacity: 1;
+  background: #ffffff;
+  transform: scale(1.1);
+}
+
+.card-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  background: rgba(27, 22, 19, 0.6);
+  padding: 4px 8px;
+  border-radius: 9999px;
+  z-index: 2;
+}
+
+.card-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.card-dot.active {
+  background: #ffffff;
+  transform: scale(1.25);
 }
 
 .bouquet-img-placeholder {

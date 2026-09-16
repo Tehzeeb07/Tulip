@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -14,7 +14,7 @@ import Reviews from "./pages/Reviews";
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
 
-function VideoBackground() {
+function VideoBackground({ blur = false }) {
   const videoRef = useRef(null);
   const rafRef = useRef(null);
   const [opacity, setOpacity] = useState(0);
@@ -69,79 +69,97 @@ function VideoBackground() {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden">
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <video
         ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
+        className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
+          blur ? "scale-110 blur-xl brightness-95" : "scale-100 blur-0 brightness-100"
+        }`}
         src={VIDEO_URL}
         muted
         playsInline
         preload="auto"
         style={{ opacity }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/60" />
+      <div
+        className={`absolute inset-0 transition-all duration-700 ease-out ${
+          blur
+            ? "bg-white/40 backdrop-blur-md"
+            : "bg-gradient-to-b from-white/30 via-transparent to-white/60"
+        }`}
+      />
+    </div>
+  );
+}
+
+function VideoLayout() {
+  const location = useLocation();
+  const isAuth = location.pathname === "/login" || location.pathname === "/signup";
+
+  return (
+    <div className="relative min-h-screen w-full overflow-hidden bg-white text-black">
+      <VideoBackground blur={isAuth} />
+      <div className="relative z-10">
+        <Outlet />
+      </div>
     </div>
   );
 }
 
 function LandingPage() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-white text-black">
-      <VideoBackground />
+    <>
+      <header className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
+        <Link
+          to="/"
+          className="text-3xl tracking-tight text-black transition-opacity hover:opacity-80"
+          style={{ fontFamily: "Georgia, serif" }}
+        >
+          Tulip<sup className="text-[0.5em] align-super">®</sup>
+        </Link>
 
-      <div className="relative z-10">
-        <header className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
-          <Link
-            to="/"
-            className="text-3xl tracking-tight text-black transition-opacity hover:opacity-80"
-            style={{ fontFamily: "Georgia, serif" }}
-          >
-            Tulip<sup className="text-[0.5em] align-super">®</sup>
+        <Link
+          to="/login"
+          className="rounded-full bg-[#FD5DA8] px-8 py-3 text-base font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
+        >
+          Log In
+        </Link>
+      </header>
+
+      <main className="flex flex-col items-center justify-center px-6 pb-40 pt-[calc(8rem-75px)] text-center">
+        <h1
+          className="max-w-7xl animate-fade-rise text-5xl font-normal leading-[0.95] tracking-[-2.46px] text-black sm:text-7xl md:text-8xl"
+          style={{ fontFamily: "Georgia, serif" }}
+        >
+          Flowers, <span className="text-[#4A4A4A] italic">arranged</span> like
+          it <span className="text-[#4A4A4A] italic">matters.</span>
+        </h1>
+
+        <h3 className="mt-8 max-w-2xl animate-fade-rise-delay text-lg leading-relaxed text-[#3A3A3A] sm:text-xl">
+          <b>Tulip composes every bouquet by hand, the day you collect it. No
+          pre-made stock, no wholesale shortcuts- just arrangements worth
+          building a moment around.</b>
+        </h3>
+
+        <Link
+          to="/bouquets"
+          className="mt-12 animate-fade-rise-delay-2 rounded-full bg-[#FD5DA8] px-16 py-6 text-xl font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
+        >
+          Explore the Collection
+        </Link>
+
+        <h3 className="mt-6 text-base text-[#3A3A3A]">
+          New here?{" "}
+          <Link to="/signup" className="text-black font-medium underline-offset-4 hover:underline">
+            Create an account
+          </Link>{" "}
+          or{" "}
+          <Link to="/login" className="text-black font-medium underline-offset-4 hover:underline">
+            log in
           </Link>
-
-          <Link
-            to="/login"
-            className="rounded-full bg-[#FD5DA8] px-8 py-3 text-base font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
-          >
-            Log In
-          </Link>
-        </header>
-
-        <main className="flex flex-col items-center justify-center px-6 pb-40 pt-[calc(8rem-75px)] text-center">
-          <h1
-            className="max-w-7xl animate-fade-rise text-5xl font-normal leading-[0.95] tracking-[-2.46px] text-black sm:text-7xl md:text-8xl"
-            style={{ fontFamily: "Georgia, serif" }}
-          >
-            Flowers, <span className="text-[#4A4A4A] italic">arranged</span> like
-            it <span className="text-[#4A4A4A] italic">matters.</span>
-          </h1>
-
-          <h3 className="mt-8 max-w-2xl animate-fade-rise-delay text-lg leading-relaxed text-[#3A3A3A] sm:text-xl">
-            <b>Tulip composes every bouquet by hand, the day you collect it. No
-            pre-made stock, no wholesale shortcuts- just arrangements worth
-            building a moment around.</b>
-          </h3>
-
-          <Link
-            to="/signup"
-                        className="mt-12 animate-fade-rise-delay-2 rounded-full bg-[#FD5DA8] px-16 py-6 text-xl font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
-          >
-            Explore the Collection
-          </Link>
-
-          <h3 className="mt-6 text-base text-[#3A3A3A]">
-            New here?{" "}
-            <Link to="/signup" className="text-black font-medium underline-offset-4 hover:underline">
-              Create an account
-            </Link>{" "}
-            or{" "}
-            <Link to="/login" className="text-black font-medium underline-offset-4 hover:underline">
-              log in
-            </Link>
-          </h3>
-        </main>
-      </div>
-    </div>
+        </h3>
+      </main>
+    </>
   );
 }
 
@@ -149,11 +167,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route element={<VideoLayout />}>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
+
         <Route path="/bouquets" element={<Bouquets />} />
+        <Route path="/home" element={<Bouquets />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/occasions" element={<Occasions />} />

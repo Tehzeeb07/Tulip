@@ -13,8 +13,17 @@
   margin: 0 auto;
 }
 
-.reviews-header {
+.reviews-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   margin-bottom: 56px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.reviews-header {
+  max-width: 650px;
 }
 
 .reviews-header h1 {
@@ -22,11 +31,33 @@
   font-size: 60px;
   font-weight: 500;
   margin-bottom: 14px;
+  color: #1B1613;
 }
 
 .reviews-header p {
   font-size: 20px;
   color: rgba(68,48,37,0.65);
+}
+
+.write-review-btn {
+  background: #FD5DA8;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(253, 93, 168, 0.25);
+  white-space: nowrap;
+}
+
+.write-review-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+  box-shadow: 0 8px 24px rgba(253, 93, 168, 0.35);
 }
 
 .reviews-grid {
@@ -38,42 +69,116 @@
 .review-card {
   background: #FFFFFF;
   border: 1px solid rgba(68,48,37,0.1);
-  padding: 40px;
+  border-radius: 20px;
+  padding: 36px 36px 28px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px -6px rgba(68, 48, 37, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -8px rgba(68, 48, 37, 0.1);
+}
+
+.review-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .stars {
-  margin-bottom: 20px;
+  display: flex;
+  gap: 2px;
 }
 
 .star {
-  font-size: 20px;
+  font-size: 19px;
   color: rgba(68,48,37,0.2);
 }
 
 .star.filled {
-  color: #FF6FA5;
+  color: #FD5DA8;
+}
+
+.review-date {
+  font-size: 13px;
+  color: rgba(68, 48, 37, 0.45);
+  font-weight: 500;
 }
 
 .quote {
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1.6;
-  font-weight: 500;
-  color: #443025;
-  margin-bottom: 28px;
-  min-height: 100px;
+  font-weight: 400;
+  color: #33241b;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+/* Uploaded Photos Grid in Card */
+.review-photos-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.review-photo-btn {
+  width: 84px;
+  height: 84px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0;
+  background: #f0ede8;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
+}
+
+.review-photo-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.review-photo-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .review-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
-  border-top: 1px solid rgba(68,48,37,0.1);
-  font-size: 16px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(68,48,37,0.08);
+  font-size: 15px;
+}
+
+.review-author-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .review-name {
   font-weight: 600;
+  color: #1B1613;
+}
+
+.verified-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2e7d32;
+  background: #e8f5e9;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
 }
 
 .review-occasion {
@@ -81,8 +186,62 @@
   font-weight: 500;
 }
 
+/* Lightbox Preview */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  animation: lb-fade 0.2s ease-out;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -44px;
+  right: -10px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.lightbox-close:hover {
+  opacity: 0.75;
+}
+
+@keyframes lb-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @media (max-width: 900px) {
   .reviews-page { padding: 50px 24px 80px; }
   .reviews-grid { grid-template-columns: 1fr; }
   .reviews-header h1 { font-size: 42px; }
+  .reviews-header-container { flex-direction: column; align-items: flex-start; }
 }

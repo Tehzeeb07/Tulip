@@ -54,11 +54,26 @@
   color: #443025;
 }
 
-.pick-img {
+.pick-img-wrap {
+  width: 100%;
   aspect-ratio: 4/5;
-  max-width: 220px;
-  background: linear-gradient(150deg, #EC9C9D, #7F5836);
-  margin-bottom: 16px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  background: #f0ede8;
+}
+
+.pick-img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.pick-card:hover .pick-img {
+  transform: scale(1.04);
 }
 
 .pick-card h3 {
@@ -97,13 +112,13 @@
 
 @media (max-width: 900px) {
   .occasion-detail-page { padding: 40px 24px 80px; }
-    .picks-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-    }
+  .picks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
 
 @media (max-width: 560px) {
   .picks-grid { grid-template-columns: 1fr; }
 }
-};

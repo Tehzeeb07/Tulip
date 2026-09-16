@@ -1,0 +1,238 @@
+.order-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modal-fade-in 0.2s ease-out;
+}
+
+.order-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 36px 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  animation: card-pop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.order-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  line-height: 1;
+  color: #777;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.order-modal-close:hover {
+  color: #000;
+}
+
+.order-modal-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(253, 93, 168, 0.12);
+  color: #d81b7a;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  margin-bottom: 14px;
+}
+
+.order-modal-title {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #111111;
+  margin: 0 0 8px;
+}
+
+.order-modal-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.order-modal-header-text {
+  flex: 1;
+}
+
+.order-modal-item-preview {
+  width: 72px;
+  height: 88px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  background: #f0ede8;
+}
+
+.order-modal-item-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.order-summary-box {
+  background: #f9f9fb;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.order-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.order-summary-row:last-child {
+  margin-bottom: 0;
+}
+
+.summary-label {
+  color: #777777;
+}
+
+.summary-value {
+  color: #111111;
+  font-weight: 500;
+}
+
+.order-summary-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 12px 0;
+}
+
+.total-row {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.total-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.order-field {
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-field label {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.order-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #111111;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.order-field textarea:focus {
+  outline: none;
+  border-color: #FD5DA8;
+  box-shadow: 0 0 0 3px rgba(253, 93, 168, 0.2);
+}
+
+.order-modal-btn-primary {
+  width: 100%;
+  padding: 15px 24px;
+  background: #FD5DA8;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.18s, opacity 0.18s;
+}
+
+.order-modal-btn-primary:hover:not(:disabled) {
+  opacity: 0.93;
+  transform: scale(1.01);
+}
+
+.order-modal-btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.order-error {
+  color: #e11d48;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.order-success-view {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.order-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 auto 18px;
+}
+
+.order-success-msg {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #222222;
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+
+.order-success-sub {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: #666666;
+  margin: 0 0 24px;
+}

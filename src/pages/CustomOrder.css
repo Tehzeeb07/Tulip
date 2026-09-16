@@ -5,27 +5,81 @@
   background: #FDF8F5;
   font-family: 'Inter', sans-serif;
   color: #443025;
-  padding: 80px 24px 120px;
+  padding: 60px 24px 120px;
   display: flex;
   justify-content: center;
 }
 
 .custom-order-wrap {
   width: 100%;
-  max-width: 600px;
+  max-width: 620px;
 }
 
 .custom-order-wrap h1 {
   font-family: 'Fraunces', serif;
-  font-size: 46px;
+  font-size: 44px;
   font-weight: 500;
   margin-bottom: 12px;
 }
 
 .subtitle {
-  font-size: 18px;
-  color: rgba(68,48,37,0.65);
-  margin-bottom: 44px;
+  font-size: 17px;
+  color: rgba(68,48,37,0.68);
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.custom-order-guest-notice {
+  background: #ffffff;
+  border: 1px solid rgba(253, 93, 168, 0.3);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 10px 25px -5px rgba(253, 93, 168, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.notice-content {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #443025;
+}
+
+.notice-content strong {
+  color: #d81b7a;
+}
+
+.notice-links {
+  display: flex;
+  gap: 10px;
+}
+
+.notice-btn {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.notice-btn.primary {
+  background: #FD5DA8;
+  color: #ffffff;
+}
+
+.notice-btn.secondary {
+  background: #f4f4f5;
+  color: #222222;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.notice-btn:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
 }
 
 form {
@@ -36,11 +90,14 @@ form {
 
 input, select, textarea {
   padding: 15px 16px;
-  border: 1px solid rgba(68,48,37,0.25);
+  border: 1px solid rgba(68,48,37,0.2);
   background: #FFFFFF;
+  border-radius: 12px;
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   color: #443025;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 textarea {
@@ -49,41 +106,46 @@ textarea {
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: #FF6FA5;
+  border-color: #FD5DA8;
+  box-shadow: 0 0 0 3px rgba(253, 93, 168, 0.2);
 }
 
-button {
-  background: #FF6FA5;
-  color: #FDF8F5;
+button[type="submit"] {
+  background: #FD5DA8;
+  color: #ffffff;
   border: none;
-  padding: 17px;
+  border-radius: 9999px;
+  padding: 16px 28px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   margin-top: 8px;
-  transition: opacity 0.2s;
+  transition: transform 0.18s, opacity 0.18s;
 }
 
-button:disabled {
+button[type="submit"]:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-button:hover:not(:disabled) {
-  opacity: 0.9;
+button[type="submit"]:hover:not(:disabled) {
+  opacity: 0.93;
+  transform: scale(1.01);
 }
 
 .error-text {
-  color: #FF6FA5;
-  font-size: 15px;
+  color: #e11d48;
+  font-size: 14px;
   font-weight: 500;
 }
 
 .success-box {
   background: #FFFFFF;
   border: 1px solid rgba(68,48,37,0.15);
+  border-radius: 16px;
   padding: 34px;
   font-size: 17px;
   font-weight: 500;
-  color: rgba(68,48,37,0.8);
+  color: rgba(68,48,37,0.85);
+  line-height: 1.5;
 }

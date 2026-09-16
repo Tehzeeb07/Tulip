@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { PRODUCTS } from "../data/products";
 import { OCCASIONS } from "../data/occasions";
+import Navbar from "../components/Navbar";
 import "./OccasionDetail.css";
 
 export default function OccasionDetail() {
@@ -9,22 +10,27 @@ export default function OccasionDetail() {
 
   if (!occasion) {
     return (
-      <div className="occasion-detail-page">
-        <div className="occasion-detail-wrap">
-          <p className="not-found">
-            That collection couldn't be found. <Link to="/occasions">Back to Occasions</Link>
-          </p>
+      <>
+        <Navbar />
+        <div className="occasion-detail-page">
+          <div className="occasion-detail-wrap">
+            <p className="not-found">
+              That collection couldn't be found. <Link to="/occasions">Back to Occasions</Link>
+            </p>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   const picks = PRODUCTS.filter((p) => occasion.matches.includes(p.occasion));
 
   return (
-    <div className="occasion-detail-page">
-      <div className="occasion-detail-wrap">
-        <Link to="/occasions" className="back-link">← Back to Occasions</Link>
+    <>
+      <Navbar />
+      <div className="occasion-detail-page">
+        <div className="occasion-detail-wrap">
+          <Link to="/occasions" className="back-link">← Back to Occasions</Link>
 
         <div className="occasion-detail-header">
           <h1>{occasion.name}</h1>
@@ -37,7 +43,9 @@ export default function OccasionDetail() {
           <div className="picks-grid">
             {picks.map((item) => (
               <Link to={`/product/${item.id}`} className="pick-card" key={item.id}>
-                <div className="pick-img" />
+                <div className="pick-img-wrap">
+                  <img src={item.image} alt={item.name} className="pick-img" loading="lazy" />
+                </div>
                 <h3>{item.name}</h3>
                 <div className="pick-meta">
                   <span>{item.desc}</span>
@@ -49,5 +57,6 @@ export default function OccasionDetail() {
         )}
       </div>
     </div>
+    </>
   );
 }

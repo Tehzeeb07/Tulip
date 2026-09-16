@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useAuthActions } from "@convex-dev/auth/react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import "./Auth.css";
 
 export default function Signup() {
   const { signIn } = useAuthActions();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirect = searchParams.get("redirect") || "/bouquets";
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,17 +28,26 @@ export default function Signup() {
         username,
         flow: "signUp",
       });
-      navigate("/home");
+      navigate(redirect);
     } catch {
       setError("Something went wrong. Try a different email.");
     }
   };
 
+  const loginLink = searchParams.get("redirect")
+    ? `/login?redirect=${encodeURIComponent(searchParams.get("redirect"))}`
+    : "/login";
+
   return (
     <div className="auth-page">
       <div className="auth-box">
+        <div className="auth-header">
+          <Link to="/" className="auth-brand" style={{ fontFamily: "Georgia, serif" }}>
+            Tulip<sup className="text-[0.5em] align-super">®</sup>
+          </Link>
+        </div>
         <h1>Create an account</h1>
-        <p className="auth-sub">Free to join — no purchases happen here, just save what you love.</p>
+        <p className="auth-sub">Create your Tulip account to place orders, save favorites, and receive updates.</p>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -62,7 +74,7 @@ export default function Signup() {
           <button type="submit">Create account</button>
         </form>
         <p className="auth-switch">
-          Already have an account? <Link to="/login">Log in</Link>
+          Already have an account? <Link to={loginLink}>Log in</Link>
         </p>
       </div>
     </div>
