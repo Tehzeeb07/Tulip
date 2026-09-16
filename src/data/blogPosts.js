@@ -20,7 +20,7 @@ Finally, remove any leaves that sit below the waterline. Submerged foliage rots 
     excerpt: "Why an in-season bouquet looks better and lasts longer than an imported one.",
     category: "Styling",
     readTime: "5 min read",
-    image: null,
+    image: "./images/season.png",
     content: `Flowers grown in season are harvested closer to their peak, which means they arrive fuller, more fragrant, and simply last longer than imported out-of-season blooms flown in from elsewhere.
 
 In spring, look for ranunculus, tulips, and anemones — delicate, layered petals that define the season. Summer brings dahlias, garden roses, and sunflowers, all suited to bold, textured arrangements.
