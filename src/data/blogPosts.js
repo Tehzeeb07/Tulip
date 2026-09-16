@@ -50,7 +50,7 @@ With the right placement, a well-made dried arrangement can hold its shape and c
     excerpt: "A few placement tips that make any bouquet feel more considered.",
     category: "Styling",
     readTime: "4 min read",
-    image: "/images/home.png",
+    image: "/images/vase.png",
     content: `Where you place a bouquet changes how it reads in a room as much as the arrangement itself. A single striking piece on a dining table draws the eye immediately — resist the urge to add too much else nearby.
 
 Vase height matters more than people expect. A too-tall vase can swallow a smaller bouquet, while a too-short one can make a full arrangement look cramped. Aim for the vase to be roughly a third of the total height.
