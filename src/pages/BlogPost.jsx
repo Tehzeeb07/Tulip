@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import { BLOG_POSTS } from "../data/blogPosts";
 import "./BlogPost.css";
 
@@ -8,18 +9,23 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <div className="blogpost-page">
-        <div className="blogpost-wrap">
-          <p className="not-found">
-            That article couldn't be found. <Link to="/blog">Back to the Journal</Link>
-          </p>
+      <>
+        <Navbar />
+        <div className="blogpost-page">
+          <div className="blogpost-wrap">
+            <p className="not-found">
+              That article couldn't be found. <Link to="/blog">Back to the Journal</Link>
+            </p>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="blogpost-page">
+    <>
+      <Navbar />
+      <div className="blogpost-page">
       <div className="blogpost-wrap">
         <Link to="/blog" className="back-link">← Back to the Journal</Link>
 
@@ -40,5 +46,6 @@ export default function BlogPost() {
         </div>
       </div>
     </div>
+    </>
   );
 }

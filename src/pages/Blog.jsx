@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import { BLOG_POSTS } from "../data/blogPosts";
 import { CARE_SHORTS } from "../data/careShorts";
 import "./Blog.css";
@@ -8,7 +9,9 @@ export default function Blog() {
   const [activeShort, setActiveShort] = useState(null);
 
   return (
-    <div className="blog-page">
+    <>
+      <Navbar />
+      <div className="blog-page">
       <div className="blog-wrap">
         <div className="blog-header">
           <h1>Flower Care Journal</h1>
@@ -75,5 +78,6 @@ export default function Blog() {
         </div>
       </div>
     </div>
+    </>
   );
 }

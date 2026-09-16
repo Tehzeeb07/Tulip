@@ -53,6 +53,12 @@ export default function Navbar() {
           >
             Reviews
           </Link>
+          <Link
+            to="/blog"
+            className={`navbar-link ${location.pathname.startsWith("/blog") ? "active" : ""}`}
+          >
+            Journal
+          </Link>
         </nav>
 
         <div className="navbar-auth">
