@@ -24,7 +24,10 @@ export default function Blog() {
                 key={short.id}
                 onClick={() => setActiveShort(short)}
               >
-                <div className="short-thumb">
+                <div
+                  className="short-thumb"
+                  style={short.image ? { backgroundImage: `url(${short.image})` } : undefined}
+                >
                   <span className="play-icon">▶</span>
                 </div>
                 <h4>{short.title}</h4>

@@ -1,5 +1,5 @@
 export const CARE_SHORTS = [
-  { id: 1, title: "Re-cutting stems", duration: "0:18", videoUrl: "https://www.youtube.com/embed/zhb3HGPbfC0", image: null },
+  { id: 1, title: "Re-cutting stems", duration: "0:18", videoUrl: "https://www.youtube.com/embed/zhb3HGPbfC0", image: "/images/cutting.png" },
   { id: 2, title: "Changing the water", duration: "0:15", videoUrl: "https://www.youtube.com/embed/eoslMMmeaqw", image: null },
   { id: 3, title: "Removing wilted petals", duration: "0:12", videoUrl: "https://www.youtube.com/embed/OJEDm0ieSNY", image: null },
   { id: 4, title: "Best vase placement", duration: "0:20", videoUrl: "https://www.youtube.com/embed/E_KJroAO1RY", image: null },
