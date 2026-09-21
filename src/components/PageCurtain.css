@@ -1,0 +1,57 @@
+.curtain-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: all;
+  overflow: hidden;
+}
+
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -20vw;
+  width: 140vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.curtain-primary {
+  background: #111111;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+}
+
+.curtain-title-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+}
+
+.curtain-title {
+  font-family: "Georgia", serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 400;
+  color: #fdfbf7;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.curtain-brand {
+  margin-top: 14px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: #FD5DA8;
+  text-transform: uppercase;
+  opacity: 0.9;
+}

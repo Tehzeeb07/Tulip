@@ -13,6 +13,7 @@ import Reviews from "./pages/Reviews";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import RollingTextButton from "./components/RollingTextButton";
+import PageCurtain from "./components/PageCurtain";
 
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
@@ -169,6 +170,7 @@ function LandingPage() {
 function App() {
   return (
     <BrowserRouter>
+      <PageCurtain />
       <Routes>
         <Route element={<VideoLayout />}>
           <Route path="/" element={<LandingPage />} />
