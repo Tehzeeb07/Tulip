@@ -18,48 +18,48 @@ export default function Navbar() {
         </Link>
 
         <nav className="navbar-links">
-          <Link
+          <RollingTextButton
             to="/"
             className={`navbar-link ${location.pathname === "/" ? "active" : ""}`}
           >
             Home
-          </Link>
-          <Link
+          </RollingTextButton>
+          <RollingTextButton
             to="/bouquets"
             className={`navbar-link ${location.pathname === "/bouquets" ? "active" : ""}`}
           >
             Bouquets
-          </Link>
-          <Link
+          </RollingTextButton>
+          <RollingTextButton
             to="/accessories"
             className={`navbar-link ${location.pathname === "/accessories" ? "active" : ""}`}
           >
             Accessories
-          </Link>
-          <Link
+          </RollingTextButton>
+          <RollingTextButton
             to="/occasions"
             className={`navbar-link ${location.pathname.startsWith("/occasions") ? "active" : ""}`}
           >
             Occasions
-          </Link>
-          <Link
+          </RollingTextButton>
+          <RollingTextButton
             to="/custom-order"
             className={`navbar-link ${location.pathname === "/custom-order" ? "active" : ""}`}
           >
             Custom Order
-          </Link>
-          <Link
+          </RollingTextButton>
+          <RollingTextButton
             to="/reviews"
             className={`navbar-link ${location.pathname === "/reviews" ? "active" : ""}`}
           >
             Reviews
-          </Link>
-          <Link
+          </RollingTextButton>
+          <RollingTextButton
             to="/blog"
             className={`navbar-link ${location.pathname.startsWith("/blog") ? "active" : ""}`}
           >
             Journal
-          </Link>
+          </RollingTextButton>
         </nav>
 
         <div className="navbar-auth">
@@ -70,12 +70,12 @@ export default function Navbar() {
             </Link>
           ) : (
             <div className="navbar-auth-buttons">
-              <Link
+              <RollingTextButton
                 to={`/login?redirect=${currentPath}`}
                 className="navbar-login-link"
               >
                 Log In
-              </Link>
+              </RollingTextButton>
               <RollingTextButton
                 to={`/signup?redirect=${currentPath}`}
                 className="navbar-signup-btn"
