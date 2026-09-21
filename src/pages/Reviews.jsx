@@ -4,6 +4,7 @@ import { api } from "../../convex/_generated/api";
 import Navbar from "../components/Navbar";
 import WriteReviewModal from "../components/WriteReviewModal";
 import AuthRequiredModal from "../components/AuthRequiredModal";
+import RollingTextButton from "../components/RollingTextButton";
 import "./Reviews.css";
 
 const SEED_REVIEWS = [
@@ -108,13 +109,12 @@ export default function Reviews() {
               <h1>Reviews & Testimonials</h1>
               <p>What people say after collecting their arrangement.</p>
             </div>
-            <button
-              type="button"
-              className="write-review-btn"
+            <RollingTextButton
               onClick={handlePostReviewClick}
+              className="write-review-btn"
             >
               + Post a Review
-            </button>
+            </RollingTextButton>
           </div>
 
           <div className="reviews-grid">

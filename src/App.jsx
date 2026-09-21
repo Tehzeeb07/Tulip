@@ -12,6 +12,7 @@ import CustomOrder from "./pages/CustomOrder";
 import Reviews from "./pages/Reviews";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import RollingTextButton from "./components/RollingTextButton";
 
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
@@ -120,12 +121,12 @@ function LandingPage() {
           Tulip<sup className="text-[0.5em] align-super">®</sup>
         </Link>
 
-        <Link
+        <RollingTextButton
           to="/login"
-          className="rounded-full bg-[#FD5DA8] px-8 py-3 text-base font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
+          className="rounded-full bg-[#FD5DA8] px-8 py-3 text-base font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-[#FD5DA8]/30"
         >
           Log In
-        </Link>
+        </RollingTextButton>
       </header>
 
       <main className="flex flex-col items-center justify-center px-6 pb-40 pt-[calc(8rem-75px)] text-center">
@@ -143,12 +144,12 @@ function LandingPage() {
           building a moment around.</b>
         </h3>
 
-        <Link
+        <RollingTextButton
           to="/bouquets"
-          className="mt-12 animate-fade-rise-delay-2 rounded-full bg-[#FD5DA8] px-16 py-6 text-xl font-semibold text-white transition-transform duration-200 hover:scale-[1.03]"
+          className="mt-12 animate-fade-rise-delay-2 rounded-full bg-[#FD5DA8] px-16 py-6 text-xl font-semibold text-white transition-shadow duration-300 hover:shadow-xl hover:shadow-[#FD5DA8]/40"
         >
           Explore the Collection
-        </Link>
+        </RollingTextButton>
 
         <h3 className="mt-6 text-base text-[#3A3A3A]">
           New here?{" "}

@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import RollingTextButton from "./RollingTextButton";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -75,12 +76,12 @@ export default function Navbar() {
               >
                 Log In
               </Link>
-              <Link
+              <RollingTextButton
                 to={`/signup?redirect=${currentPath}`}
                 className="navbar-signup-btn"
               >
                 Create Account
-              </Link>
+              </RollingTextButton>
             </div>
           )}
         </div>
