@@ -1,96 +1,53 @@
-import { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
+import { usePageTransition } from "../context/PageTransitionContext";
 import "./PageCurtain.css";
 
-const PAGE_TITLES = {
-  "/": "Tulip",
-  "/bouquets": "The Collection",
-  "/home": "The Collection",
-  "/accessories": "Accessories",
-  "/occasions": "Occasions",
-  "/custom-order": "Custom Order",
-  "/reviews": "Reviews",
-  "/blog": "Flower Care Journal",
-  "/login": "Sign In",
-  "/signup": "Join Tulip",
-  "/profile": "My Account",
-};
-
-function getPageTitle(pathname) {
-  if (PAGE_TITLES[pathname]) return PAGE_TITLES[pathname];
-  if (pathname.startsWith("/product/")) return "Arrangement";
-  if (pathname.startsWith("/occasions/")) return "Occasion";
-  if (pathname.startsWith("/blog/")) return "Care Journal";
-  return "Tulip";
-}
-
 export default function PageCurtain() {
-  const location = useLocation();
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [displayTitle, setDisplayTitle] = useState("");
-  const isFirstRender = useRef(true);
-  const prevPath = useRef(location.pathname);
+  const { isActive, direction, title } = usePageTransition();
 
-  useEffect(() => {
-    // Skip animation on initial page mount
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      prevPath.current = location.pathname;
-      return;
-    }
-
-    // Only trigger if pathname actually changed
-    if (location.pathname !== prevPath.current) {
-      prevPath.current = location.pathname;
-      setDisplayTitle(getPageTitle(location.pathname));
-      setIsTransitioning(true);
-
-      // Scroll to top of the page under the curtain
-      window.scrollTo(0, 0);
-
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-      }, 750);
-
-      return () => clearTimeout(timer);
-    }
-  }, [location.pathname]);
+  const isFromRight = direction === "from-right";
 
   return (
-    <AnimatePresence mode="wait">
-      {isTransitioning && (
+    <AnimatePresence>
+      {isActive && (
         <div className="curtain-container" aria-hidden="true">
-          {/* Primary angled dark curtain panel */}
+          {/* Angled dark curtain panel with directional sweep */}
           <motion.div
             className="curtain-panel curtain-primary"
-            initial={{ x: "-120%", skewX: -8 }}
+            initial={{
+              x: isFromRight ? "130%" : "-130%",
+              skewX: isFromRight ? 8 : -8,
+            }}
             animate={{
-              x: ["-120%", "0%", "0%", "120%"],
-              skewX: [-8, -4, 4, 8],
+              x: isFromRight
+                ? ["130%", "0%", "0%", "-130%"]
+                : ["-130%", "0%", "0%", "130%"],
+              skewX: isFromRight
+                ? [8, 0, 0, -8]
+                : [-8, 0, 0, 8],
             }}
             transition={{
-              duration: 0.75,
+              duration: 0.7,
               times: [0, 0.42, 0.58, 1],
               ease: [0.76, 0, 0.24, 1],
             }}
           >
-            {/* Elegant Serif Page Title in Center */}
+            {/* Centered Serif Destination Title */}
             <motion.div
               className="curtain-title-wrap"
-              initial={{ opacity: 0, y: 15, scale: 0.96 }}
+              initial={{ opacity: 0, y: 12, scale: 0.96 }}
               animate={{
                 opacity: [0, 1, 1, 0],
-                y: [15, 0, 0, -15],
+                y: [12, 0, 0, -12],
                 scale: [0.96, 1, 1, 1.02],
               }}
               transition={{
-                duration: 0.75,
+                duration: 0.7,
                 times: [0, 0.38, 0.62, 1],
                 ease: "easeInOut",
               }}
             >
-              <h2 className="curtain-title">{displayTitle}</h2>
+              <h2 className="curtain-title">{title}</h2>
               <span className="curtain-brand">T U L I P ®</span>
             </motion.div>
           </motion.div>

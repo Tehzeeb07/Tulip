@@ -14,6 +14,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import RollingTextButton from "./components/RollingTextButton";
 import PageCurtain from "./components/PageCurtain";
+import { PageTransitionProvider } from "./context/PageTransitionContext";
 
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
@@ -170,26 +171,28 @@ function LandingPage() {
 function App() {
   return (
     <BrowserRouter>
-      <PageCurtain />
-      <Routes>
-        <Route element={<VideoLayout />}>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Route>
+      <PageTransitionProvider>
+        <PageCurtain />
+        <Routes>
+          <Route element={<VideoLayout />}>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Route>
 
-        <Route path="/bouquets" element={<Bouquets />} />
-        <Route path="/home" element={<Bouquets />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/accessories" element={<Accessories />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/occasions" element={<Occasions />} />
-        <Route path="/occasions/:slug" element={<OccasionDetail />} />
-        <Route path="/custom-order" element={<CustomOrder />} />
-        <Route path="/reviews" element={<Reviews />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
-      </Routes>
+          <Route path="/bouquets" element={<Bouquets />} />
+          <Route path="/home" element={<Bouquets />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/accessories" element={<Accessories />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/occasions" element={<Occasions />} />
+          <Route path="/occasions/:slug" element={<OccasionDetail />} />
+          <Route path="/custom-order" element={<CustomOrder />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+        </Routes>
+      </PageTransitionProvider>
     </BrowserRouter>
   );
 }

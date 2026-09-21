@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+import { usePageTransition } from "../context/PageTransitionContext";
 import "./RollingTextButton.css";
 
 const LETTER_TRANSITION = {
@@ -60,17 +61,27 @@ export default function RollingTextButton({
   to,
   className = "",
   staggerDelay = 0.02,
+  onClick,
   ...props
 }) {
   const textContent = typeof children === "string" ? children : "";
+  const pageTransition = usePageTransition();
 
   // If used with `to`, render a motion-enhanced Link
   if (to) {
     const MotionLink = motion.create(Link);
 
+    const handleClick = (e) => {
+      if (onClick) onClick(e);
+      if (pageTransition?.navigateWithTransition) {
+        pageTransition.navigateWithTransition(to, e);
+      }
+    };
+
     return (
       <MotionLink
         to={to}
+        onClick={handleClick}
         initial="initial"
         whileHover="hovered"
         whileTap={{ scale: 0.98 }}
