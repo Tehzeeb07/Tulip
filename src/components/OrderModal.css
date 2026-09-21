@@ -15,12 +15,15 @@
 .order-modal-card {
   position: relative;
   width: 100%;
-  max-width: 480px;
-  background: #ffffff;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--bg-card, #ffffff);
+  color: var(--text-primary, #111111);
   border-radius: 24px;
-  padding: 36px 32px;
+  padding: 32px 28px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
   animation: card-pop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -32,13 +35,13 @@
   border: none;
   font-size: 26px;
   line-height: 1;
-  color: #777;
+  color: var(--text-muted, #777);
   cursor: pointer;
   transition: color 0.15s;
 }
 
 .order-modal-close:hover {
-  color: #000;
+  color: #FD5DA8;
 }
 
 .order-modal-badge {
@@ -51,15 +54,21 @@
   color: #d81b7a;
   padding: 5px 14px;
   border-radius: 9999px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .order-modal-title {
   font-family: Georgia, serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 500;
-  color: #111111;
-  margin: 0 0 8px;
+  color: var(--text-primary, #111111);
+  margin: 0 0 6px;
+}
+
+.order-modal-desc {
+  font-size: 13px;
+  color: var(--text-secondary, #666666);
+  margin: 0;
 }
 
 .order-modal-header-row {
@@ -67,7 +76,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .order-modal-header-text {
@@ -75,8 +84,8 @@
 }
 
 .order-modal-item-preview {
-  width: 72px;
-  height: 88px;
+  width: 68px;
+  height: 82px;
   border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
@@ -92,11 +101,11 @@
 }
 
 .order-summary-box {
-  background: #f9f9fb;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--bg-secondary, #f9f9fb);
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
   border-radius: 16px;
-  padding: 18px 20px;
-  margin-bottom: 20px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
 }
 
 .order-summary-row {
@@ -104,8 +113,8 @@
   justify-content: space-between;
   align-items: center;
   font-family: "Inter", sans-serif;
-  font-size: 14px;
-  margin-bottom: 10px;
+  font-size: 13px;
+  margin-bottom: 8px;
 }
 
 .order-summary-row:last-child {
@@ -113,75 +122,266 @@
 }
 
 .summary-label {
-  color: #777777;
+  color: var(--text-muted, #777777);
 }
 
 .summary-value {
-  color: #111111;
+  color: var(--text-primary, #111111);
   font-weight: 500;
 }
 
 .order-summary-divider {
   height: 1px;
-  background: rgba(0, 0, 0, 0.08);
-  margin: 12px 0;
+  background: var(--border-color, rgba(0, 0, 0, 0.08));
+  margin: 10px 0;
 }
 
 .total-row {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  color: #111111;
+  color: var(--text-primary, #111111);
 }
 
 .total-price {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
-  color: #111111;
+  color: var(--text-primary, #111111);
 }
 
-.order-field {
-  margin-bottom: 22px;
+/* =========================================
+   GIFT NOTE & WAX SEAL CUSTOMIZER
+   ========================================= */
+
+.gift-note-toggle-row {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  background: rgba(253, 93, 168, 0.06);
+  border: 1px solid rgba(253, 93, 168, 0.2);
+  border-radius: 12px;
+}
+
+.gift-note-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #222222);
+  cursor: pointer;
+  user-select: none;
+}
+
+.gift-note-checkbox-label input[type="checkbox"] {
+  accent-color: #FD5DA8;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+
+.gift-note-section {
+  background: var(--bg-secondary, #faf9f6);
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+  border-radius: 18px;
+  padding: 18px 16px;
+  margin-bottom: 18px;
   display: flex;
   flex-direction: column;
+  gap: 16px;
+}
+
+.gift-note-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gift-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gift-input-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary, #555555);
+}
+
+.gift-input-group input,
+.gift-input-group textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.12));
+  background: var(--bg-card, #ffffff);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--text-primary, #111111);
+  box-sizing: border-box;
+}
+
+.gift-input-group input:focus,
+.gift-input-group textarea:focus {
+  outline: none;
+  border-color: #FD5DA8;
+}
+
+/* Wax Seal Picker */
+.wax-seal-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wax-seal-picker label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary, #555555);
+}
+
+.wax-seals-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 
+.wax-seal-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.1));
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.wax-seal-btn.active {
+  border-color: #FD5DA8;
+  background: rgba(253, 93, 168, 0.08);
+}
+
+.wax-seal-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  display: block;
+}
+
+.wax-seal-name {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-primary, #333333);
+}
+
+/* Live Letterpress Card Preview */
+.letterpress-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.preview-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #FD5DA8;
+  font-weight: 700;
+}
+
+.letterpress-card {
+  position: relative;
+  background: #fdfbf7;
+  border: 1px solid #e8e3d8;
+  border-radius: 12px;
+  padding: 24px 20px 20px;
+  color: #2b261f;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  font-family: Georgia, serif;
+}
+
+.wax-seal-stamp {
+  position: absolute;
+  top: -12px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: "Georgia", serif;
+  font-weight: bold;
+  font-size: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transform: rotate(-8deg);
+  user-select: none;
+}
+
+.letterpress-to {
+  font-size: 13px;
+  font-style: italic;
+  margin-bottom: 8px;
+  color: #5c4f3d;
+}
+
+.letterpress-body {
+  font-size: 14px;
+  line-height: 1.5;
+  font-style: italic;
+  margin-bottom: 12px;
+  min-height: 38px;
+}
+
+.letterpress-from {
+  font-size: 12px;
+  text-align: right;
+  font-style: italic;
+  color: #5c4f3d;
+}
+
+/* Order Fields & Actions */
+.order-field {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .order-field label {
-  font-family: "Inter", sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: #333333;
+  color: var(--text-secondary, #333333);
 }
 
 .order-field textarea {
   width: 100%;
-  padding: 12px 14px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #ffffff;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.12));
+  background: var(--bg-card, #ffffff);
   border-radius: 12px;
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-  color: #111111;
+  font-size: 13px;
+  color: var(--text-primary, #111111);
   resize: vertical;
   box-sizing: border-box;
-  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .order-field textarea:focus {
   outline: none;
   border-color: #FD5DA8;
-  box-shadow: 0 0 0 3px rgba(253, 93, 168, 0.2);
 }
 
 .order-modal-btn-primary {
   width: 100%;
-  padding: 15px 24px;
+  padding: 14px 24px;
   background: #FD5DA8;
   color: #ffffff;
   border: none;
   border-radius: 9999px;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.18s, opacity 0.18s;
@@ -209,30 +409,28 @@
 }
 
 .order-success-icon {
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: rgba(16, 185, 129, 0.12);
   color: #10b981;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: bold;
-  margin: 0 auto 18px;
+  margin: 0 auto 16px;
 }
 
 .order-success-msg {
-  font-family: "Inter", sans-serif;
   font-size: 15px;
-  color: #222222;
+  color: var(--text-primary, #222222);
   line-height: 1.5;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
 }
 
 .order-success-sub {
-  font-family: "Inter", sans-serif;
   font-size: 13px;
-  color: #666666;
-  margin: 0 0 24px;
+  color: var(--text-secondary, #666666);
+  margin: 0 0 20px;
 }

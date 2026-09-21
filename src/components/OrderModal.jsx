@@ -1,12 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import "./OrderModal.css";
 
+const WAX_SEALS = [
+  { id: "gold", name: "Champagne Gold", hex: "#D4AF37", border: "#B5922F" },
+  { id: "burgundy", name: "Imperial Burgundy", hex: "#6B1D2F", border: "#4F1321" },
+  { id: "green", name: "Forest Emerald", hex: "#1E4D2B", border: "#14371E" },
+  { id: "pink", name: "Tulip Rose", hex: "#FD5DA8", border: "#D8337F" },
+];
+
 export default function OrderModal({ isOpen, onClose, product, selectedSize, user, activeImage }) {
   const createOrder = useMutation(api.orders.createOrder);
   const [notes, setNotes] = useState("");
+  const [includeGiftNote, setIncludeGiftNote] = useState(false);
+  const [recipient, setRecipient] = useState("");
+  const [giftMessage, setGiftMessage] = useState("");
+  const [sender, setSender] = useState("");
+  const [selectedSeal, setSelectedSeal] = useState(WAX_SEALS[0]);
   const [status, setStatus] = useState("idle"); // idle | placing | success | error
+
+  useEffect(() => {
+    if (user) {
+      setSender(user.name || user.username || "");
+    }
+  }, [user]);
 
   if (!isOpen || !product) return null;
 
@@ -15,13 +33,21 @@ export default function OrderModal({ isOpen, onClose, product, selectedSize, use
   const handleConfirm = async (e) => {
     e.preventDefault();
     setStatus("placing");
+
+    let finalNotes = notes.trim();
+
+    if (includeGiftNote && (giftMessage.trim() || recipient.trim())) {
+      const giftNoteSection = `[Handwritten Gift Card — ${selectedSeal.name} Wax Seal]\nTo: ${recipient || "You"}\n"${giftMessage}"\nWith Love: ${sender || "An Admirer"}`;
+      finalNotes = finalNotes ? `${giftNoteSection}\n\nAdditional Notes: ${finalNotes}` : giftNoteSection;
+    }
+
     try {
       await createOrder({
         productId: product.id,
         productName: product.name,
         price: product.price,
         size: selectedSize || product.sizes?.[0] || "Standard",
-        notes: notes.trim() || undefined,
+        notes: finalNotes || undefined,
       });
       setStatus("success");
     } catch (err) {
@@ -33,6 +59,9 @@ export default function OrderModal({ isOpen, onClose, product, selectedSize, use
   const handleClose = () => {
     setStatus("idle");
     setNotes("");
+    setGiftMessage("");
+    setRecipient("");
+    setIncludeGiftNote(false);
     onClose();
   };
 
@@ -51,9 +80,11 @@ export default function OrderModal({ isOpen, onClose, product, selectedSize, use
               Thank you, <strong>{user?.name || user?.username || "there"}</strong>! Your order for{" "}
               <strong>{product.name}</strong> ({selectedSize || "Standard"}) has been placed.
             </p>
-            <p className="order-success-sub">
-              Our florists will compose your piece fresh. We've linked this order to your account.
-            </p>
+            {includeGiftNote && (
+              <p className="order-success-sub">
+                Our florists will hand-inscribe your card with your <strong>{selectedSeal.name}</strong> wax seal.
+              </p>
+            )}
             <button className="order-modal-btn-primary" onClick={handleClose}>
               Done
             </button>
@@ -95,12 +126,108 @@ export default function OrderModal({ isOpen, onClose, product, selectedSize, use
               </div>
             </div>
 
+            {/* Gift Note & Wax Seal Toggle */}
+            <div className="gift-note-toggle-row">
+              <label className="gift-note-checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={includeGiftNote}
+                  onChange={(e) => setIncludeGiftNote(e.target.checked)}
+                />
+                <span>Add Complimentary Handwritten Gift Card & Wax Seal</span>
+              </label>
+            </div>
+
+            {includeGiftNote && (
+              <div className="gift-note-section">
+                <div className="gift-note-inputs">
+                  <div className="gift-input-group">
+                    <label>Recipient Name</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Eleanor"
+                      value={recipient}
+                      onChange={(e) => setRecipient(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="gift-input-group">
+                    <label>Your Message</label>
+                    <textarea
+                      rows={3}
+                      placeholder="Write your note here... It will be inscribed by hand."
+                      value={giftMessage}
+                      onChange={(e) => setGiftMessage(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="gift-input-group">
+                    <label>Sign-off / Sender</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Always, Julian"
+                      value={sender}
+                      onChange={(e) => setSender(e.target.value)}
+                    />
+                  </div>
+
+                  {/* Wax Seal Picker */}
+                  <div className="wax-seal-picker">
+                    <label>Select Wax Seal Color</label>
+                    <div className="wax-seals-row">
+                      {WAX_SEALS.map((seal) => (
+                        <button
+                          key={seal.id}
+                          type="button"
+                          className={`wax-seal-btn ${selectedSeal.id === seal.id ? "active" : ""}`}
+                          onClick={() => setSelectedSeal(seal)}
+                          title={seal.name}
+                        >
+                          <span
+                            className="wax-seal-dot"
+                            style={{ backgroundColor: seal.hex, borderColor: seal.border }}
+                          />
+                          <span className="wax-seal-name">{seal.name.split(" ")[1] || seal.name}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Live Card Preview */}
+                <div className="letterpress-preview-wrap">
+                  <span className="preview-label">Live Card Preview</span>
+                  <div className="letterpress-card">
+                    <div
+                      className="wax-seal-stamp"
+                      style={{
+                        backgroundColor: selectedSeal.hex,
+                        boxShadow: `0 4px 12px ${selectedSeal.hex}55`,
+                      }}
+                      title={`${selectedSeal.name} Wax Seal`}
+                    >
+                      <span>T</span>
+                    </div>
+                    <div className="letterpress-to">
+                      Dearest {recipient || "Friend"},
+                    </div>
+                    <div className="letterpress-body">
+                      {giftMessage || "Flowers to brighten your day and remind you how much you are cherished."}
+                    </div>
+                    <div className="letterpress-from">
+                      — {sender || "With love"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="order-field">
-              <label htmlFor="order-notes">Gift Note or Collection Instructions (optional)</label>
+              <label htmlFor="order-notes">Special Instructions (optional)</label>
               <textarea
                 id="order-notes"
-                placeholder="Include a message for the handwritten card, or specify your pickup day/time..."
-                rows={3}
+                placeholder="Preferred pickup time or any floral allergies..."
+                rows={2}
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
               />

@@ -1,0 +1,234 @@
+.quiz-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.quiz-modal {
+  position: relative;
+  background: var(--bg-card, #ffffff);
+  color: var(--text-primary, #111111);
+  width: 100%;
+  max-width: 580px;
+  border-radius: 24px;
+  padding: 36px 32px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+}
+
+.quiz-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--text-muted, #777777);
+  transition: color 0.18s;
+  padding: 6px;
+}
+
+.quiz-close:hover {
+  color: #FD5DA8;
+}
+
+.quiz-progress-bar {
+  height: 4px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+[data-theme="dark"] .quiz-progress-bar {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: #FD5DA8;
+  transition: width 0.3s ease;
+}
+
+.quiz-step-indicator {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #FD5DA8;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.quiz-question-title {
+  font-family: "Georgia", serif;
+  font-size: 26px;
+  margin: 0 0 6px;
+  font-weight: 400;
+  color: var(--text-primary, #111111);
+}
+
+.quiz-question-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary, #666666);
+  margin: 0 0 28px;
+}
+
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.quiz-option-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 16px;
+  background: var(--bg-secondary, #faf9f6);
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+.quiz-option-btn:hover {
+  border-color: #FD5DA8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(253, 93, 168, 0.15);
+}
+
+.quiz-option-icon {
+  font-size: 26px;
+}
+
+.quiz-option-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary, #222222);
+}
+
+/* Result styles */
+.quiz-result-wrap {
+  text-align: center;
+}
+
+.quiz-result-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FD5DA8;
+  background: rgba(253, 93, 168, 0.1);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+}
+
+.quiz-result-title {
+  font-family: "Georgia", serif;
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0 0 8px;
+  color: var(--text-primary, #111111);
+}
+
+.quiz-result-desc {
+  font-size: 14px;
+  color: var(--text-secondary, #666666);
+  margin: 0 auto 24px;
+  max-width: 420px;
+}
+
+.quiz-result-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--bg-secondary, #faf9f6);
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+  border-radius: 18px;
+  padding: 16px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.quiz-result-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.quiz-result-info {
+  flex: 1;
+}
+
+.quiz-result-occasion {
+  font-size: 12px;
+  color: #FD5DA8;
+  font-weight: 600;
+  display: block;
+}
+
+.quiz-result-price {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary, #111111);
+  display: block;
+  margin: 2px 0 4px;
+}
+
+.quiz-result-flower-list {
+  font-size: 12px;
+  color: var(--text-secondary, #666666);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.quiz-result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quiz-primary-btn {
+  background: #FD5DA8;
+  color: #ffffff;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.quiz-primary-btn:hover {
+  opacity: 0.92;
+  transform: scale(1.02);
+}
+
+.quiz-retake-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted, #777777);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.quiz-retake-btn:hover {
+  color: var(--text-primary, #111111);
+}

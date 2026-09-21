@@ -20,3 +20,149 @@
 .animate-fade-rise-delay-2 {
   animation: fade-rise 0.8s ease-out 0.4s both;
 }
+
+/* =========================================
+   EVENING BLOOM (LUXURY DARK THEME)
+   ========================================= */
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #faf9f6;
+  --bg-card: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #555555;
+  --text-muted: #777777;
+  --border-color: rgba(0, 0, 0, 0.07);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --navbar-bg: rgba(255, 255, 255, 0.92);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0c0c0c;
+  --bg-secondary: #131313;
+  --bg-card: #181818;
+  --text-primary: #f5f2eb;
+  --text-secondary: #b3b0a6;
+  --text-muted: #7e7b73;
+  --border-color: rgba(255, 255, 255, 0.09);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --navbar-bg: rgba(12, 12, 12, 0.92);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode overrides for common components */
+[data-theme="dark"] .tulip-navbar {
+  background: var(--navbar-bg);
+  border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .navbar-logo {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .navbar-link {
+  color: #999999;
+}
+
+[data-theme="dark"] .navbar-link:hover,
+[data-theme="dark"] .navbar-link.active {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .navbar-login-link {
+  color: #dddddd;
+}
+
+[data-theme="dark"] .navbar-login-link:hover {
+  color: #FD5DA8;
+}
+
+[data-theme="dark"] .navbar-profile-btn {
+  background: #242424;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .navbar-profile-btn:hover {
+  background: #333333;
+}
+
+[data-theme="dark"] .bouquets-page,
+[data-theme="dark"] .accessories-page,
+[data-theme="dark"] .occasions-page,
+[data-theme="dark"] .custom-order-page,
+[data-theme="dark"] .reviews-page,
+[data-theme="dark"] .blog-page,
+[data-theme="dark"] .blogpost-page {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .bouquet-card,
+[data-theme="dark"] .accessory-card,
+[data-theme="dark"] .review-card,
+[data-theme="dark"] .blog-card,
+[data-theme="dark"] .short-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="dark"] .bouquet-card h3,
+[data-theme="dark"] .accessory-card h3,
+[data-theme="dark"] .blog-card h2,
+[data-theme="dark"] .short-card h4 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .bouquet-meta,
+[data-theme="dark"] .accessory-meta,
+[data-theme="dark"] .blog-card p,
+[data-theme="dark"] .quote {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .filter-btn {
+  background: #1c1c1c;
+  color: #b0b0b0;
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .filter-btn:hover {
+  background: #2a2a2a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .filter-btn.active {
+  background: #FD5DA8;
+  color: #ffffff;
+  border-color: #FD5DA8;
+}
+
+[data-theme="dark"] .order-modal-card,
+[data-theme="dark"] .write-review-modal,
+[data-theme="dark"] .auth-modal-card {
+  background: #181818;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background: #242424;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #777777;
+}
