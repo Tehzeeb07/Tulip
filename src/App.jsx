@@ -117,10 +117,9 @@ function LandingPage() {
       <header className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
         <Link
           to="/"
-          className="text-3xl tracking-tight text-black transition-opacity hover:opacity-80"
-          style={{ fontFamily: "Georgia, serif" }}
+          className="flex items-center transition-opacity hover:opacity-80"
         >
-          Tulip<sup className="text-[0.5em] align-super">®</sup>
+          <img src="/images/logo.png" alt="Tulip" className="h-10 w-auto" />
         </Link>
 
         <RollingTextButton
