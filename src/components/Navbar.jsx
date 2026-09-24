@@ -19,8 +19,8 @@ export default function Navbar() {
     <>
       <header className="tulip-navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo" style={{ fontFamily: "Georgia, serif" }}>
-            Tulip<sup className="text-[0.5em] align-super">®</sup>
+          <Link to="/" className="navbar-logo">
+            <img src="/images/logo.png" alt="Tulip" style={{ height: "36px", width: "auto" }} />
           </Link>
 
           <nav className="navbar-links">
