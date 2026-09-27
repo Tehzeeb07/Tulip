@@ -181,9 +181,8 @@ function App() {
           <Route element={<VideoLayout />}>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/bouquets" element={<Bouquets />} />
           </Route>
-
-          <Route path="/bouquets" element={<VideoLayout><Bouquets /></VideoLayout>} />
           <Route path="/home" element={<Bouquets />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/accessories" element={<Accessories />} />
