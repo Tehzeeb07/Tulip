@@ -39,3 +39,13 @@ export default defineSchema({
     createdAt: v.number(),
   }).index("by_created_at", ["createdAt"]),
 });
+
+  reviews: defineTable({
+    userId: v.id("users"),
+    userName: v.string(),
+    occasion: v.string(),
+    rating: v.number(),
+    quote: v.string(),
+    images: v.optional(v.array(v.string())),
+    createdAt: v.number(),
+  }).index("by_user", ["userId"]),
