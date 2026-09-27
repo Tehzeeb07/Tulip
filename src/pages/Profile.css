@@ -27,7 +27,7 @@
 
 /* Page root */
 .tulip-profile {
-  background: var(--ivory);
+  background: transparent;
   color: var(--dark-choc);
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;

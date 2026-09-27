@@ -2,7 +2,7 @@
 
 .custom-order-page {
   min-height: 100vh;
-  background: var(--bg-primary, #FDF8F5);
+  background: transparent;
   font-family: 'Inter', sans-serif;
   color: var(--text-primary, #443025);
   padding: 48px 24px 120px;

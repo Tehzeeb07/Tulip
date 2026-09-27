@@ -17,6 +17,8 @@ import PageCurtain from "./components/PageCurtain";
 import { PageTransitionProvider } from "./context/PageTransitionContext";
 import landingFlorals from "./assets/landing-florals.png";
 
+const FLORAL_BACKGROUND_EXEMPT = new Set(["/", "/login", "/signup"]);
+
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
 
@@ -112,6 +114,23 @@ function VideoLayout({ children }) {
   );
 }
 
+function FloralPagesLayout() {
+  const location = useLocation();
+  const showFlorals = !FLORAL_BACKGROUND_EXEMPT.has(location.pathname);
+
+  return (
+    <div className={`floral-pages-layout${showFlorals ? " floral-pages-layout-visible" : ""}`}>
+      {showFlorals && (
+        <div className="floral-pages-background" aria-hidden="true">
+          <img src={landingFlorals} alt="" />
+          <div />
+        </div>
+      )}
+      <div className="floral-pages-content"><Outlet /></div>
+    </div>
+  );
+}
+
 function LandingPage() {
   return (
     <>
@@ -174,25 +193,25 @@ function App() {
       <PageTransitionProvider>
         <PageCurtain />
         <Routes>
-          <Route element={<VideoLayout />}>
-            <Route path="/" element={<LandingPage />} />
+          <Route element={<FloralPagesLayout />}>
+            <Route path="/" element={<VideoLayout><LandingPage /></VideoLayout>} />
+            <Route path="/bouquets" element={<Bouquets />} />
+            <Route path="/home" element={<Bouquets />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/accessories" element={<Accessories />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/occasions" element={<Occasions />} />
+            <Route path="/occasions/:slug" element={<OccasionDetail />} />
+            <Route path="/custom-order" element={<CustomOrder />} />
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
           </Route>
 
           <Route element={<VideoLayout />}>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/bouquets" element={<Bouquets />} />
           </Route>
-          <Route path="/home" element={<Bouquets />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/accessories" element={<Accessories />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/occasions" element={<Occasions />} />
-          <Route path="/occasions/:slug" element={<OccasionDetail />} />
-          <Route path="/custom-order" element={<CustomOrder />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </PageTransitionProvider>
     </BrowserRouter>
