@@ -131,3 +131,8 @@
   font-weight: 500;
 }
 
+.auth-box h1,
+.dark .auth-box h1,
+[data-theme="dark"] .auth-box h1 {
+  color: #111111 !important;
+}
