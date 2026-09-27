@@ -30,12 +30,12 @@ a {
 }
 
 .floral-pages-layout-visible {
-  background: #faf6ef;
+  background: transparent;
 }
 
 .floral-pages-background {
   position: fixed;
-  z-index: -1;
+  z-index: 0;
   inset: -18px;
   overflow: hidden;
   pointer-events: none;
@@ -46,17 +46,30 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: center 48%;
-  filter: blur(15px) saturate(0.76);
-  transform: scale(1.07);
+  filter: blur(3px) saturate(0.9);
+  transform: scale(1.035);
 }
 
 .floral-pages-background > div {
   position: absolute;
   inset: 0;
-  background: rgba(250, 246, 239, 0.79);
+  background: rgba(250, 246, 239, 0.46);
 }
 
 .floral-pages-content {
   position: relative;
+  z-index: 1;
   min-height: 100vh;
+}
+
+.floral-pages-layout-visible .bouquets-page,
+.floral-pages-layout-visible .accessories-page,
+.floral-pages-layout-visible .occasions-page,
+.floral-pages-layout-visible .occasion-detail-page,
+.floral-pages-layout-visible .product-page,
+.floral-pages-layout-visible .custom-order-page,
+.floral-pages-layout-visible .reviews-page,
+.floral-pages-layout-visible .blog-page,
+.floral-pages-layout-visible .blogpost-page {
+  background: transparent !important;
 }
