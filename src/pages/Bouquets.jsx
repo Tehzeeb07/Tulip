@@ -3,6 +3,7 @@ import "./Bouquets.css";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { PRODUCTS } from "../data/products";
+import landingFlorals from "../assets/landing-florals.png";
 
 const BOUQUET_PRODUCTS = PRODUCTS.filter((p) => p.type === "bouquet");
 
@@ -89,7 +90,11 @@ export default function Bouquets() {
   return (
     <>
       <Navbar />
-      <div className="bouquets-page">
+      <div className="bouquets-page bouquets-page-photo-preview">
+        <div className="bouquets-photo-background" aria-hidden="true">
+          <img src={landingFlorals} alt="" />
+          <div />
+        </div>
         <div className="bouquets-wrap">
           <div className="bouquets-header">
             <h1>The Collection</h1>

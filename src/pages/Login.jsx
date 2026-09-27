@@ -36,7 +36,7 @@ export default function Login() {
             Tulip<sup className="text-[0.5em] align-super">®</sup>
           </Link>
         </div>
-        <h1>Welcome back</h1>
+        <h1 className="auth-title">Welcome back</h1>
         <p className="auth-sub">Log in to place orders, save favorites, and receive order updates.</p>
         <form onSubmit={handleSubmit}>
           <input

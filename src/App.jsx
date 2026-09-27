@@ -15,6 +15,7 @@ import BlogPost from "./pages/BlogPost";
 import RollingTextButton from "./components/RollingTextButton";
 import PageCurtain from "./components/PageCurtain";
 import { PageTransitionProvider } from "./context/PageTransitionContext";
+import landingFlorals from "./assets/landing-florals.png";
 
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
@@ -97,7 +98,7 @@ function VideoBackground({ blur = false }) {
   );
 }
 
-function VideoLayout() {
+function VideoLayout({ children }) {
   const location = useLocation();
   const isAuth = location.pathname === "/login" || location.pathname === "/signup";
 
@@ -105,7 +106,7 @@ function VideoLayout() {
     <div className="relative min-h-screen w-full overflow-hidden bg-white text-black">
       <VideoBackground blur={isAuth} />
       <div className="relative z-10">
-        <Outlet />
+        {children || <Outlet />}
       </div>
     </div>
   );
@@ -135,8 +136,8 @@ function LandingPage() {
           className="max-w-7xl animate-fade-rise text-5xl font-normal leading-[0.95] tracking-[-2.46px] text-black sm:text-7xl md:text-8xl"
           style={{ fontFamily: "Georgia, serif" }}
         >
-          Flowers, <span className="text-[#4A4A4A] italic">arranged</span> like
-          it <span className="text-[#4A4A4A] italic">matters.</span>
+            <span className="text-[#FF6FA5] italic">Flowers,</span> <span className="text-[#4A4A4A] italic">arranged</span> <span className="text-[#FF6FA5]">like
+          it</span> <span className="text-[#4A4A4A] italic">matters.</span>
         </h1>
 
         <h3 className="mt-8 max-w-2xl animate-fade-rise-delay text-lg leading-relaxed text-[#3A3A3A] sm:text-xl">
@@ -175,11 +176,14 @@ function App() {
         <Routes>
           <Route element={<VideoLayout />}>
             <Route path="/" element={<LandingPage />} />
+          </Route>
+
+          <Route element={<VideoLayout />}>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Route>
 
-          <Route path="/bouquets" element={<Bouquets />} />
+          <Route path="/bouquets" element={<VideoLayout><Bouquets /></VideoLayout>} />
           <Route path="/home" element={<Bouquets />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/accessories" element={<Accessories />} />
