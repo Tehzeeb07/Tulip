@@ -39,10 +39,14 @@ export default function Profile() {
   };
 
   const handleSignOut = async () => {
-    await signOut();
-    navigate("/");
+    try {
+      await signOut();
+    } finally {
+      // Remove only client-side data belonging to the local user.
+      localStorage.removeItem("tulip_avatar");
+      navigate("/", { replace: true });
+    }
   };
-
   const isLoading = user === undefined;
   const initial = user?.username?.[0]?.toUpperCase() ?? "?";
   const displayName = user?.displayName ?? user?.username ?? "Your Name";
