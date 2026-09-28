@@ -7,7 +7,9 @@ import { ConvexReactClient } from "convex/react";
 import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 
-const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL);
+const convexUrl =
+  import.meta.env.VITE_CONVEX_URL || "https://tangible-ibis-791.convex.cloud";
+const convex = new ConvexReactClient(convexUrl);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

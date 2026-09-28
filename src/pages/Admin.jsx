@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import Navbar from "../components/Navbar";
-import { INITIAL_PRODUCTS } from "../../convex/products";
 import "./Admin.css";
 
 const OCCASIONS_LIST = [
