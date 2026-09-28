@@ -47,20 +47,23 @@ export default function Login() {
         <h1 className="auth-title">Welcome back</h1>
         <p className="auth-sub">Log in to place orders, save favorites, and receive order updates.</p>
         <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="name@company.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+            <input
+              type="email"
+              placeholder="name@company.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+              required
+            />
+
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+              required
+            />
           {error && <div className="err">{error}</div>}
           <button type="submit">Log in</button>
         </form>
