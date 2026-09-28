@@ -40,7 +40,15 @@ export default function Signup() {
 
   return (
     <div className="auth-page">
-      <div className="auth-box">
+      <div className="auth-layout">
+        <div className="auth-illustration">
+          <img
+            src="/images/auth-illustration.png"
+            alt="Secure account illustration"
+          />
+        </div>
+
+        <div className="auth-box">
         <div className="auth-header">
           <Link to="/" className="auth-brand" style={{ fontFamily: "Georgia, serif" }}>
             Tulip<sup className="text-[0.5em] align-super">®</sup>
@@ -78,5 +86,6 @@ export default function Signup() {
         </p>
       </div>
     </div>
+  </div>
   );
 }
