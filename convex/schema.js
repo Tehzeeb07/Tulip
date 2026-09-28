@@ -38,5 +38,25 @@ export default defineSchema({
     images: v.optional(v.array(v.string())),
     createdAt: v.number(),
   }).index("by_created_at", ["createdAt"]),
+  products: defineTable({
+    id: v.string(),
+    name: v.string(),
+    price: v.number(),
+    desc: v.string(),
+    type: v.string(),
+    occasion: v.optional(v.string()),
+    category: v.optional(v.string()),
+    sizes: v.optional(v.array(v.string())),
+    image: v.string(),
+    images: v.array(v.string()),
+    careTips: v.optional(v.string()),
+    inStock: v.optional(v.boolean()),
+    featured: v.optional(v.boolean()),
+    createdAt: v.optional(v.number()),
+    updatedAt: v.optional(v.number()),
+  })
+    .index("by_type", ["type"])
+    .index("by_id", ["id"])
+    .index("by_occasion", ["occasion"]),
 });
 

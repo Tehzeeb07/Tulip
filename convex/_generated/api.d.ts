@@ -13,6 +13,7 @@ import type * as customOrders from "../customOrders.js";
 import type * as favorites from "../favorites.js";
 import type * as http from "../http.js";
 import type * as orders from "../orders.js";
+import type * as products from "../products.js";
 import type * as reviews from "../reviews.js";
 import type * as users from "../users.js";
 
@@ -28,6 +29,7 @@ declare const fullApi: ApiFromModules<{
   favorites: typeof favorites;
   http: typeof http;
   orders: typeof orders;
+  products: typeof products;
   reviews: typeof reviews;
   users: typeof users;
 }>;

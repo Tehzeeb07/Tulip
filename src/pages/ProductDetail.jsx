@@ -10,8 +10,12 @@ import OrderModal from "../components/OrderModal";
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const product = PRODUCTS.find((p) => p.id === id);
-  const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || "");
+  const remoteProduct = useQuery(api.products.getProductById, { id: id || "" });
+  const fallbackProduct = PRODUCTS.find((p) => p.id === id);
+  const product = remoteProduct ?? fallbackProduct;
+
+  const [selectedSize, setSelectedSize] = useState("");
+  const activeSize = selectedSize || product?.sizes?.[0] || "";
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [isShuffling, setIsShuffling] = useState(false);
 
@@ -176,7 +180,7 @@ export default function ProductDetail() {
                     {product.sizes.map((size) => (
                       <button
                         key={size}
-                        className={`size-btn ${selectedSize === size ? "active" : ""}`}
+                        className={`size-btn ${activeSize === size ? "active" : ""}`}
                         onClick={() => setSelectedSize(size)}
                       >
                         {size}
@@ -209,7 +213,7 @@ export default function ProductDetail() {
         isOpen={showOrderModal}
         onClose={() => setShowOrderModal(false)}
         product={product}
-        selectedSize={selectedSize}
+        selectedSize={activeSize}
         user={user}
         activeImage={imageList[activeImgIndex]}
       />

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 import { PRODUCTS } from "../data/products";
 import RollingTextButton from "./RollingTextButton";
 import "./FloralQuizModal.css";
@@ -41,9 +43,7 @@ const QUESTIONS = [
   },
 ];
 
-function findMatch(answers) {
-  const bouquets = PRODUCTS.filter((p) => p.type === "bouquet");
-
+function findMatch(answers, bouquets) {
   // Palette priority matching
   if (answers.palette === "moody") {
     return bouquets.find((b) => b.id === "midnight-velvet") || bouquets[0];
@@ -65,6 +65,9 @@ function findMatch(answers) {
 
 export default function FloralQuizModal({ isOpen, onClose }) {
   const navigate = useNavigate();
+  const remoteBouquets = useQuery(api.products.getProducts, { type: "bouquet" });
+  const bouquets = remoteBouquets && remoteBouquets.length > 0 ? remoteBouquets : PRODUCTS.filter((p) => p.type === "bouquet");
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [matchedBouquet, setMatchedBouquet] = useState(null);
@@ -79,7 +82,7 @@ export default function FloralQuizModal({ isOpen, onClose }) {
       setCurrentStep((prev) => prev + 1);
     } else {
       // Finished all 3 questions
-      const match = findMatch(updated);
+      const match = findMatch(updated, bouquets);
       setMatchedBouquet(match);
       setCurrentStep(QUESTIONS.length); // Result step
     }

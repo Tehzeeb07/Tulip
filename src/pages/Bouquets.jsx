@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./Bouquets.css";
 import { Link } from "react-router-dom";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 import Navbar from "../components/Navbar";
 import { PRODUCTS } from "../data/products";
 
@@ -76,7 +78,9 @@ function BouquetCard({ bouquet }) {
 }
 
 export default function Bouquets() {
-  const [bouquets] = useState(BOUQUET_PRODUCTS);
+  const remoteBouquets = useQuery(api.products.getProducts, { type: "bouquet" });
+  const bouquets = remoteBouquets && remoteBouquets.length > 0 ? remoteBouquets : BOUQUET_PRODUCTS;
+
   const [occasion, setOccasion] = useState("All");
   const [priceRange, setPriceRange] = useState(PRICE_RANGES[0]);
 

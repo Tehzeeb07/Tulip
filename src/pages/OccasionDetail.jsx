@@ -1,4 +1,6 @@
 import { useParams, Link } from "react-router-dom";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 import { PRODUCTS } from "../data/products";
 import { OCCASIONS } from "../data/occasions";
 import Navbar from "../components/Navbar";
@@ -7,6 +9,8 @@ import "./OccasionDetail.css";
 export default function OccasionDetail() {
   const { slug } = useParams();
   const occasion = OCCASIONS.find((o) => o.slug === slug);
+  const remoteProducts = useQuery(api.products.getProducts);
+  const allProducts = remoteProducts && remoteProducts.length > 0 ? remoteProducts : PRODUCTS;
 
   if (!occasion) {
     return (
@@ -23,7 +27,7 @@ export default function OccasionDetail() {
     );
   }
 
-  const picks = PRODUCTS.filter((p) => occasion.matches.includes(p.occasion));
+  const picks = allProducts.filter((p) => occasion.matches.includes(p.occasion));
 
   return (
     <>

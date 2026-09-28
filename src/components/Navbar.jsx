@@ -66,6 +66,12 @@ export default function Navbar() {
             >
               Journal
             </RollingTextButton>
+            <RollingTextButton
+              to="/admin"
+              className={`navbar-link ${location.pathname === "/admin" ? "active" : ""}`}
+            >
+              Admin
+            </RollingTextButton>
           </nav>
 
           <div className="navbar-auth">

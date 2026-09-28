@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 import { PRODUCTS } from "../data/products";
 import Navbar from "../components/Navbar";
 import "./Accessories.css";
@@ -73,10 +75,13 @@ function AccessoryCard({ item }) {
 }
 
 export default function Accessories() {
+  const remoteItems = useQuery(api.products.getProducts, { type: "accessory" });
+  const items = remoteItems && remoteItems.length > 0 ? remoteItems : ITEMS;
+
   const [category, setCategory] = useState("All");
   const [priceRange, setPriceRange] = useState(PRICE_RANGES[0]);
 
-  const filtered = ITEMS.filter((item) => {
+  const filtered = items.filter((item) => {
     const matchesCategory = category === "All" || item.occasion === category;
     const matchesPrice = item.price >= priceRange.min && item.price <= priceRange.max;
     return matchesCategory && matchesPrice;

@@ -12,6 +12,7 @@ import CustomOrder from "./pages/CustomOrder";
 import Reviews from "./pages/Reviews";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Admin from "./pages/Admin";
 import RollingTextButton from "./components/RollingTextButton";
 import PageCurtain from "./components/PageCurtain";
 import { PageTransitionProvider } from "./context/PageTransitionContext";
@@ -206,6 +207,7 @@ function App() {
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/admin" element={<Admin />} />
           </Route>
 
           <Route element={<VideoLayout />}>
