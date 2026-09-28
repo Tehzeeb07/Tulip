@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "convex/react";
+import { useAuthActions } from "@convex-dev/auth/react";
 import { api } from "../../convex/_generated/api";
 import Navbar from "../components/Navbar";
 import { PRODUCTS } from "../data/products";
@@ -21,6 +22,20 @@ const OCCASIONS_LIST = [
 const PRESET_SIZES = ["Petite", "Signature", "Grand", "Standard", "Small", "Medium", "Large"];
 
 export default function Admin() {
+  const { signOut } = useAuthActions();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    localStorage.removeItem("tulip_admin_session");
+    localStorage.removeItem("tulip_avatar");
+    try {
+      await signOut();
+    } catch {
+      // ignore
+    }
+    navigate("/login");
+  };
+
   // Remote Convex queries & mutations
   const remoteUser = useQuery(api.users.getCurrentUser);
   const localAdmin = (() => {
@@ -141,6 +156,9 @@ export default function Admin() {
     images: [""],
     careTips: "",
     inStock: true,
+    palette: "",
+    space: "",
+    mood: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -158,6 +176,9 @@ export default function Admin() {
       images: [""],
       careTips: "",
       inStock: true,
+      palette: "blush",
+      space: "living",
+      mood: "romantic",
     });
     setModalMode("add");
   };
@@ -177,6 +198,9 @@ export default function Admin() {
       images: prod.images && prod.images.length > 0 ? [...prod.images] : [prod.image || ""],
       careTips: prod.careTips || "",
       inStock: prod.inStock !== false,
+      palette: prod.palette || "",
+      space: prod.space || "",
+      mood: prod.mood || "",
     });
     setModalMode("edit");
   };
@@ -208,6 +232,9 @@ export default function Admin() {
           images: cleanImages,
           careTips: modalData.careTips,
           inStock: modalData.inStock,
+          palette: modalData.type === "bouquet" ? (modalData.palette || undefined) : undefined,
+          space: modalData.type === "bouquet" ? (modalData.space || undefined) : undefined,
+          mood: modalData.type === "bouquet" ? (modalData.mood || undefined) : undefined,
         });
         showToast(`Created "${modalData.name}" successfully!`);
       } else {
@@ -223,6 +250,9 @@ export default function Admin() {
           images: cleanImages,
           careTips: modalData.careTips,
           inStock: modalData.inStock,
+          palette: modalData.type === "bouquet" ? (modalData.palette || undefined) : undefined,
+          space: modalData.type === "bouquet" ? (modalData.space || undefined) : undefined,
+          mood: modalData.type === "bouquet" ? (modalData.mood || undefined) : undefined,
         });
         showToast(`Updated "${modalData.name}" successfully!`);
       }
@@ -383,19 +413,18 @@ export default function Admin() {
             <div className="admin-header-actions">
               <button
                 type="button"
-                className="admin-btn admin-btn-seed"
-                onClick={() => handleSeed(false)}
-                disabled={isSeeding}
-                title="Migrate default bouquet and accessory data to remote Convex"
-              >
-                {isSeeding ? "Syncing..." : "🔄 Seed / Sync Database"}
-              </button>
-              <button
-                type="button"
                 className="admin-btn admin-btn-primary"
                 onClick={openAddModal}
               >
                 + Add New Product
+              </button>
+              <button
+                type="button"
+                className="admin-btn admin-btn-secondary"
+                onClick={handleSignOut}
+                title="Sign out of backoffice session"
+              >
+                Sign Out
               </button>
             </div>
           </header>
@@ -585,6 +614,22 @@ export default function Admin() {
                     <div className="admin-card-body">
                       <div className="admin-card-meta">
                         <span className="admin-occasion-tag">{p.occasion || "Floral"}</span>
+                        {p.palette && (
+                          <span
+                            className="admin-quiz-tag"
+                            title={`Quiz Match: ${p.palette}${p.space ? ` / ${p.space}` : ""}${p.mood ? ` / ${p.mood}` : ""}`}
+                            style={{
+                              fontSize: "0.72rem",
+                              padding: "2px 8px",
+                              borderRadius: "999px",
+                              background: "rgba(253, 93, 168, 0.12)",
+                              color: "#d8317e",
+                              fontWeight: 600,
+                            }}
+                          >
+                            🔮 {p.palette}
+                          </span>
+                        )}
                         <span className="admin-slug-id">#{p.id}</span>
                       </div>
 
@@ -943,6 +988,77 @@ export default function Admin() {
                   })}
                 </div>
               </div>
+
+              {/* Find Match Quiz Categorization (for Bouquets) */}
+              {modalData.type === "bouquet" && (
+                <div
+                  className="form-group full-width"
+                  style={{
+                    background: "rgba(253, 93, 168, 0.05)",
+                    border: "1px dashed rgba(253, 93, 168, 0.3)",
+                    borderRadius: "12px",
+                    padding: "16px",
+                    marginTop: "4px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
+                    <span style={{ fontSize: "1.2rem" }}>🔮</span>
+                    <div>
+                      <strong style={{ fontSize: "0.95rem", color: "var(--color-text, #2c2724)" }}>
+                        Find Match Quiz Categorization
+                      </strong>
+                      <p style={{ margin: "2px 0 0", fontSize: "0.8rem", color: "var(--color-muted, #716b66)" }}>
+                        Assign quiz preferences so customers taking the "Find Match" quiz get recommended this bouquet!
+                      </p>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px" }}>
+                    <div className="form-group">
+                      <label style={{ fontSize: "0.8rem" }}>Color Palette</label>
+                      <select
+                        value={modalData.palette || ""}
+                        onChange={(e) => setModalData({ ...modalData, palette: e.target.value })}
+                      >
+                        <option value="">Select Palette...</option>
+                        <option value="blush">🌸 Blush & Pearl</option>
+                        <option value="amber">🍂 Amber & Gold</option>
+                        <option value="moody">🍷 Moody Plum & Midnight</option>
+                        <option value="botanical">🌱 Botanicals & Whites</option>
+                      </select>
+                    </div>
+
+                    <div className="form-group">
+                      <label style={{ fontSize: "0.8rem" }}>Living Space Placement</label>
+                      <select
+                        value={modalData.space || ""}
+                        onChange={(e) => setModalData({ ...modalData, space: e.target.value })}
+                      >
+                        <option value="">Select Space...</option>
+                        <option value="dining">🍽️ Dining Centerpiece</option>
+                        <option value="bedside">🕯️ Bedside Sanctuary</option>
+                        <option value="living">🛋️ Living Room Console</option>
+                        <option value="desk">🖋️ Studio / Office Desk</option>
+                      </select>
+                    </div>
+
+                    <div className="form-group">
+                      <label style={{ fontSize: "0.8rem" }}>Occasion / Mood Vibe</label>
+                      <select
+                        value={modalData.mood || ""}
+                        onChange={(e) => setModalData({ ...modalData, mood: e.target.value })}
+                      >
+                        <option value="">Select Mood...</option>
+                        <option value="romantic">🌹 Romantic & Lush</option>
+                        <option value="celebration">🥂 Warm Celebration</option>
+                        <option value="solace">🕊️ Quiet Solace</option>
+                        <option value="everyday">🌿 Everyday Calm</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Primary Image URL */}
               <div className="form-group full-width">

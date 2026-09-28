@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useQuery } from "convex/react";
+import { useAuthActions } from "@convex-dev/auth/react";
 import { api } from "../../convex/_generated/api";
 import { useTheme } from "../context/ThemeContext";
 import RollingTextButton from "./RollingTextButton";
@@ -8,6 +9,8 @@ import FloralQuizModal from "./FloralQuizModal";
 import "./Navbar.css";
 
 export default function Navbar() {
+  const { signOut } = useAuthActions();
+  const navigate = useNavigate();
   const remoteUser = useQuery(api.users.getCurrentUser);
   const localAdmin = (() => {
     try {
@@ -22,6 +25,17 @@ export default function Navbar() {
   const [showQuizModal, setShowQuizModal] = useState(false);
 
   const currentPath = encodeURIComponent(location.pathname);
+
+  const handleSignOut = async () => {
+    localStorage.removeItem("tulip_admin_session");
+    localStorage.removeItem("tulip_avatar");
+    try {
+      await signOut();
+    } catch {
+      // ignore
+    }
+    navigate("/login");
+  };
 
   return (
     <>
@@ -106,11 +120,32 @@ export default function Navbar() {
             </button>
 
             {user ? (
-              <Link to="/profile" className="navbar-profile-btn">
-                <span className={`navbar-avatar-dot ${user.isAdmin ? "admin-dot" : ""}`}></span>
-                <span>{user.username || user.name || "My Account"}</span>
-                {user.isAdmin && <span className="navbar-admin-pill">Admin</span>}
-              </Link>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <Link to="/profile" className="navbar-profile-btn">
+                  <span className={`navbar-avatar-dot ${user.isAdmin ? "admin-dot" : ""}`}></span>
+                  <span>{user.username || user.name || "My Account"}</span>
+                  {user.isAdmin && <span className="navbar-admin-pill">Admin</span>}
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleSignOut}
+                  className="navbar-logout-btn"
+                  title="Sign Out"
+                  style={{
+                    background: "transparent",
+                    border: "1px solid var(--border-color, rgba(0, 0, 0, 0.15))",
+                    borderRadius: "999px",
+                    padding: "6px 12px",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                    color: "inherit",
+                    cursor: "pointer",
+                    transition: "all 0.2s",
+                  }}
+                >
+                  Sign Out
+                </button>
+              </div>
             ) : (
               <div className="navbar-auth-buttons">
                 <RollingTextButton

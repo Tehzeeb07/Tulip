@@ -54,6 +54,9 @@ export default defineSchema({
     careTips: v.optional(v.string()),
     inStock: v.optional(v.boolean()),
     featured: v.optional(v.boolean()),
+    palette: v.optional(v.string()), // "blush" | "amber" | "moody" | "botanical"
+    space: v.optional(v.string()),   // "dining" | "bedside" | "living" | "desk"
+    mood: v.optional(v.string()),    // "romantic" | "celebration" | "solace" | "everyday"
     createdAt: v.optional(v.number()),
     updatedAt: v.optional(v.number()),
   })

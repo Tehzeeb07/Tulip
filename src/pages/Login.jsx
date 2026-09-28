@@ -118,49 +118,6 @@ export default function Login() {
     }
   };
 
-  // One-Click Admin Quick Sign In
-  const handleAdminQuickLogin = async () => {
-    setEmail(DEFAULT_ADMIN_EMAIL);
-    setPassword(DEFAULT_ADMIN_PASSWORD);
-    setError("");
-    setIsLoggingIn(true);
-    setStatusNotice("Verifying Admin credentials...");
-
-    try {
-      await withTimeout(
-        signIn("password", {
-          email: DEFAULT_ADMIN_EMAIL,
-          password: DEFAULT_ADMIN_PASSWORD,
-          flow: "signIn",
-        }),
-        2500
-      );
-      setLocalAdminSession();
-      setStatusNotice("👑 Welcome back, Administrator! Redirecting to /admin...");
-      setTimeout(() => navigate("/admin"), 300);
-    } catch {
-      try {
-        await withTimeout(
-          signIn("password", {
-            email: DEFAULT_ADMIN_EMAIL,
-            password: DEFAULT_ADMIN_PASSWORD,
-            username: "admin",
-            flow: "signUp",
-          }),
-          2500
-        );
-        setLocalAdminSession();
-        setStatusNotice("👑 Admin verified! Redirecting to /admin...");
-        setTimeout(() => navigate("/admin"), 300);
-      } catch {
-        // Instant graceful fallback: activate admin session and route to /admin
-        setLocalAdminSession();
-        setStatusNotice("👑 Admin identity verified! Opening Studio Backoffice...");
-        setTimeout(() => navigate("/admin"), 300);
-      }
-    }
-  };
-
   const signupLink = redirectParam
     ? `/signup?redirect=${encodeURIComponent(redirectParam)}`
     : "/signup";
@@ -245,51 +202,6 @@ export default function Login() {
               {isLoggingIn ? "Logging in..." : "Log in"}
             </button>
           </form>
-
-          {/* Quick Admin Access Button */}
-          <div
-            style={{
-              marginTop: "18px",
-              paddingTop: "16px",
-              borderTop: "1px dashed rgba(253, 93, 168, 0.3)",
-              textAlign: "center",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "0.8rem",
-                color: "#716b66",
-                marginBottom: "8px",
-                fontWeight: 500,
-              }}
-            >
-              Florist Staff & Backoffice Access:
-            </div>
-            <button
-              type="button"
-              onClick={handleAdminQuickLogin}
-              disabled={isLoggingIn}
-              style={{
-                width: "100%",
-                padding: "11px 16px",
-                background: "rgba(253, 93, 168, 0.08)",
-                color: "#d8317e",
-                border: "1px solid rgba(253, 93, 168, 0.3)",
-                borderRadius: "999px",
-                fontSize: "0.9rem",
-                fontWeight: 600,
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                transition: "all 0.2s ease",
-              }}
-            >
-              <span>👑</span>
-              <span>One-Click Admin Login (admin@tulip.com)</span>
-            </button>
-          </div>
 
           <p className="auth-switch" style={{ marginTop: "16px" }}>
             New to Tulip? <Link to={signupLink}>Create an account</Link>

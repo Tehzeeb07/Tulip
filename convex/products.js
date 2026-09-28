@@ -631,6 +631,9 @@ export const createProduct = mutation({
     images: v.optional(v.array(v.string())),
     careTips: v.optional(v.string()),
     inStock: v.optional(v.boolean()),
+    palette: v.optional(v.string()),
+    space: v.optional(v.string()),
+    mood: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const slug =
@@ -663,6 +666,9 @@ export const createProduct = mutation({
       images,
       careTips: args.careTips?.trim() || undefined,
       inStock: args.inStock ?? true,
+      palette: args.palette || undefined,
+      space: args.space || undefined,
+      mood: args.mood || undefined,
       createdAt: Date.now(),
     });
 
@@ -684,6 +690,9 @@ export const updateProduct = mutation({
     images: v.optional(v.array(v.string())),
     careTips: v.optional(v.string()),
     inStock: v.optional(v.boolean()),
+    palette: v.optional(v.string()),
+    space: v.optional(v.string()),
+    mood: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const images = args.images && args.images.length > 0 ? args.images : [args.image];
@@ -699,6 +708,9 @@ export const updateProduct = mutation({
       images,
       careTips: args.careTips?.trim() || undefined,
       inStock: args.inStock ?? true,
+      palette: args.palette || undefined,
+      space: args.space || undefined,
+      mood: args.mood || undefined,
       updatedAt: Date.now(),
     });
 

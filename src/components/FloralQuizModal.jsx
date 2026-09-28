@@ -44,23 +44,44 @@ const QUESTIONS = [
 ];
 
 function findMatch(answers, bouquets) {
-  // Palette priority matching
-  if (answers.palette === "moody") {
-    return bouquets.find((b) => b.id === "midnight-velvet") || bouquets[0];
-  }
-  if (answers.palette === "amber") {
-    return bouquets.find((b) => b.id === "amber-field" || b.id === "golden-hour") || bouquets[1];
-  }
-  if (answers.palette === "blush") {
-    return bouquets.find((b) => b.id === "marchesa" || b.id === "isabella") || bouquets[0];
-  }
-  if (answers.palette === "botanical") {
-    return bouquets.find((b) => b.id === "white-sanctuary" || b.id === "quiet-grove") || bouquets[2];
-  }
+  if (!bouquets || bouquets.length === 0) return null;
 
-  // Fallback to occasion match
-  const occasionMatch = bouquets.find((b) => b.occasion === answers.mood);
-  return occasionMatch || bouquets[0];
+  // Score each bouquet based on quiz answers (palette, space, mood)
+  const scored = bouquets.map((b) => {
+    let score = 0;
+
+    // 1. Palette match (weight: 4)
+    if (b.palette && b.palette === answers.palette) {
+      score += 4;
+    } else {
+      const text = `${b.name || ""} ${b.desc || ""} ${b.id || ""}`.toLowerCase();
+      if (answers.palette === "moody" && (text.includes("velvet") || text.includes("plum") || text.includes("nocturne") || text.includes("midnight"))) score += 3;
+      if (answers.palette === "amber" && (text.includes("amber") || text.includes("golden") || text.includes("wheat") || text.includes("sun"))) score += 3;
+      if (answers.palette === "blush" && (text.includes("blush") || text.includes("rose") || text.includes("petal") || text.includes("peony") || text.includes("marchesa"))) score += 3;
+      if (answers.palette === "botanical" && (text.includes("sanctuary") || text.includes("grove") || text.includes("moss") || text.includes("heath") || text.includes("solace"))) score += 3;
+    }
+
+    // 2. Space match (weight: 3)
+    if (b.space && b.space === answers.space) {
+      score += 3;
+    }
+
+    // 3. Mood match (weight: 3)
+    if (b.mood && b.mood === answers.mood) {
+      score += 3;
+    } else if (b.occasion) {
+      const occLower = b.occasion.toLowerCase();
+      if (answers.mood === "romantic" && occLower === "wedding") score += 2;
+      if (answers.mood === "celebration" && (occLower === "events" || occLower === "birthday")) score += 2;
+      if (answers.mood === "solace" && occLower === "sympathy") score += 2;
+      if (answers.mood === "everyday" && occLower === "everyday") score += 2;
+    }
+
+    return { bouquet: b, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+  return scored[0]?.bouquet || bouquets[0];
 }
 
 export default function FloralQuizModal({ isOpen, onClose }) {
