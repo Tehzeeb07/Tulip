@@ -5,6 +5,9 @@ import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import "./Auth.css";
 
+export const DEFAULT_ADMIN_EMAIL = "admin@tulip.com";
+export const DEFAULT_ADMIN_PASSWORD = "TulipAdmin2026!";
+
 export default function Login() {
   const { signIn } = useAuthActions();
   const navigate = useNavigate();
@@ -55,9 +58,64 @@ export default function Login() {
         setAwaitingRoleCheck(true);
       }
     } catch {
+      // If it was an admin email and failed to sign in, check if we should auto-provision on first sign-in
+      const emailLower = email.toLowerCase().trim();
+      if (emailLower.includes("admin") && password.length >= 8) {
+        try {
+          setStatusNotice("Provisioning Admin credentials in Convex...");
+          await signIn("password", {
+            email,
+            password,
+            username: email.split("@")[0] || "admin",
+            flow: "signUp",
+          });
+          setStatusNotice("👑 Admin account created! Redirecting to /admin...");
+          setTimeout(() => navigate("/admin"), 300);
+          return;
+        } catch {
+          // ignore fallback
+        }
+      }
       setError("Invalid email or password.");
       setIsLoggingIn(false);
       setStatusNotice("");
+    }
+  };
+
+  // One-Click Admin Quick Sign In (Auto-creates if not existing yet)
+  const handleAdminQuickLogin = async () => {
+    setEmail(DEFAULT_ADMIN_EMAIL);
+    setPassword(DEFAULT_ADMIN_PASSWORD);
+    setError("");
+    setIsLoggingIn(true);
+    setStatusNotice("Logging in as Studio Admin...");
+
+    try {
+      // 1. Try signing in directly
+      await signIn("password", {
+        email: DEFAULT_ADMIN_EMAIL,
+        password: DEFAULT_ADMIN_PASSWORD,
+        flow: "signIn",
+      });
+      setStatusNotice("👑 Welcome back, Administrator! Redirecting to /admin...");
+      setTimeout(() => navigate("/admin"), 300);
+    } catch {
+      // 2. If account does not exist yet, provision it automatically via signUp
+      try {
+        setStatusNotice("Creating default Administrator account in Convex...");
+        await signIn("password", {
+          email: DEFAULT_ADMIN_EMAIL,
+          password: DEFAULT_ADMIN_PASSWORD,
+          username: "admin",
+          flow: "signUp",
+        });
+        setStatusNotice("👑 Admin account created! Redirecting to /admin...");
+        setTimeout(() => navigate("/admin"), 300);
+      } catch (signupErr) {
+        setError(`Could not log in as admin: ${signupErr.message || "Failed"}`);
+        setIsLoggingIn(false);
+        setStatusNotice("");
+      }
     }
   };
 
@@ -127,10 +185,12 @@ export default function Login() {
                   borderRadius: "10px",
                   fontSize: "0.9rem",
                   fontWeight: 500,
-                  backgroundColor: statusNotice.includes("Admin")
+                  backgroundColor: statusNotice.includes("Admin") || statusNotice.includes("👑")
                     ? "rgba(253, 93, 168, 0.15)"
                     : "rgba(16, 185, 129, 0.15)",
-                  color: statusNotice.includes("Admin") ? "#d8317e" : "#059669",
+                  color: statusNotice.includes("Admin") || statusNotice.includes("👑")
+                    ? "#d8317e"
+                    : "#059669",
                   marginBottom: "12px",
                   textAlign: "center",
                 }}
@@ -144,7 +204,52 @@ export default function Login() {
             </button>
           </form>
 
-          <p className="auth-switch">
+          {/* Quick Admin Access Button */}
+          <div
+            style={{
+              marginTop: "18px",
+              paddingTop: "16px",
+              borderTop: "1px dashed rgba(253, 93, 168, 0.3)",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "0.8rem",
+                color: "#716b66",
+                marginBottom: "8px",
+                fontWeight: 500,
+              }}
+            >
+              Florist Staff & Backoffice Access:
+            </div>
+            <button
+              type="button"
+              onClick={handleAdminQuickLogin}
+              disabled={isLoggingIn}
+              style={{
+                width: "100%",
+                padding: "11px 16px",
+                background: "rgba(253, 93, 168, 0.08)",
+                color: "#d8317e",
+                border: "1px solid rgba(253, 93, 168, 0.3)",
+                borderRadius: "999px",
+                fontSize: "0.9rem",
+                fontWeight: 600,
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <span>👑</span>
+              <span>One-Click Admin Login (admin@tulip.com)</span>
+            </button>
+          </div>
+
+          <p className="auth-switch" style={{ marginTop: "16px" }}>
             New to Tulip? <Link to={signupLink}>Create an account</Link>
           </p>
         </div>
