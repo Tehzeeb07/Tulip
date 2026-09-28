@@ -17,8 +17,16 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    if (password.length < 8) {
-      setError("Password must be at least 8 characters.");
+    const passwordIsStrong =
+  password.length >= 8 &&
+  /[a-z]/.test(password) &&
+  /[A-Z]/.test(password) &&
+  /\d/.test(password);
+
+    if (!passwordIsStrong) {
+      setError(
+        "Password must be at least 8 characters and include an uppercase letter, lowercase letter, and number."
+      );
       return;
     }
     try {
@@ -78,6 +86,10 @@ export default function Signup() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+
+            <p className="password-hint">
+              Use at least 8 characters with uppercase, lowercase, and a number.
+            </p>
           {error && <div className="err">{error}</div>}
           <button type="submit">Create account</button>
         </form>
