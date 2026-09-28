@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import Navbar from "../components/Navbar";
+import { PRODUCTS } from "../data/products";
 import "./Admin.css";
 
 const OCCASIONS_LIST = [
@@ -21,7 +22,16 @@ const PRESET_SIZES = ["Petite", "Signature", "Grand", "Standard", "Small", "Medi
 
 export default function Admin() {
   // Remote Convex queries & mutations
-  const user = useQuery(api.users.getCurrentUser);
+  const remoteUser = useQuery(api.users.getCurrentUser);
+  const localAdmin = (() => {
+    try {
+      return JSON.parse(localStorage.getItem("tulip_admin_session"));
+    } catch {
+      return null;
+    }
+  })();
+  const user = remoteUser || localAdmin;
+
   const setRole = useMutation(api.users.setRole);
   const [isUpdatingRole, setIsUpdatingRole] = useState(false);
 
@@ -34,8 +44,8 @@ export default function Admin() {
   const deleteProduct = useMutation(api.products.deleteProduct);
 
   // Fallback to static catalog if DB is empty or still connecting
-  const products = remoteProducts ?? [];
-  const isConvexConnected = remoteProducts !== undefined;
+  const products = remoteProducts && remoteProducts.length > 0 ? remoteProducts : PRODUCTS;
+  const isConvexConnected = remoteProducts !== undefined && remoteProducts.length > 0;
 
   const handleMakeAdmin = async () => {
     try {

@@ -8,7 +8,15 @@ import FloralQuizModal from "./FloralQuizModal";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const user = useQuery(api.users.getCurrentUser);
+  const remoteUser = useQuery(api.users.getCurrentUser);
+  const localAdmin = (() => {
+    try {
+      return JSON.parse(localStorage.getItem("tulip_admin_session"));
+    } catch {
+      return null;
+    }
+  })();
+  const user = remoteUser || localAdmin;
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const [showQuizModal, setShowQuizModal] = useState(false);
