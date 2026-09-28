@@ -148,3 +148,18 @@
 .dark .blogpost-category {
   color: #EC9C9D;
 }
+
+.back-link,
+.dark .back-link,
+[data-theme="dark"] .back-link {
+  color: #e75480 !important;
+  font-weight: 600;
+}
+
+.blogpost-page .blogpost-wrap a.back-link,
+.dark .blogpost-page .blogpost-wrap a.back-link,
+[data-theme="dark"] .blogpost-page .blogpost-wrap a.back-link {
+  color: #e75480 !important;
+  font-weight: 600;
+  opacity: 1 !important;
+}

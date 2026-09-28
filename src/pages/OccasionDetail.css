@@ -122,3 +122,10 @@
 @media (max-width: 560px) {
   .picks-grid { grid-template-columns: 1fr; }
 }
+
+
+.occasion-detail-header h1,
+.dark .occasion-detail-header h1,
+[data-theme="dark"] .occasion-detail-header h1 {
+  color: #e75480 !important;
+}

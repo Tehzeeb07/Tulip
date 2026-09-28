@@ -92,8 +92,8 @@ export default function Bouquets() {
       <div className="bouquets-page">
         <div className="bouquets-wrap">
           <div className="bouquets-header">
-            <h1>The Collection</h1>
-            <p>Composed to order, restocked with the season.</p>
+            <h1 className="pink-heading">The Collection</h1>
+            <p className="pink-heading">Composed to order, restocked with the season.</p>
           </div>
 
           <div className="filters">

@@ -115,14 +115,18 @@ body {
 }
 
 /* Headers & Subtitles */
-[data-theme="dark"] h1,
 [data-theme="dark"] .bouquets-header h1,
 [data-theme="dark"] .accessories-header h1,
 [data-theme="dark"] .occasions-header h1,
 [data-theme="dark"] .reviews-header h1,
 [data-theme="dark"] .blog-header h1,
 [data-theme="dark"] .studio-header h1 {
-  color: #ffffff !important;
+  color: #e75480 !important;
+}
+
+.bouquets-header h1,
+[data-theme="dark"] .bouquets-header h1 {
+  color: #e75480 !important;
 }
 
 [data-theme="dark"] .bouquets-header p,
@@ -132,12 +136,17 @@ body {
 [data-theme="dark"] .blog-header p,
 [data-theme="dark"] .subtitle,
 [data-theme="dark"] .timeline-subtitle {
-  color: #c4c0b6 !important;
+  color: #3e3d53 !important;
+  font-weight: 600;
 }
 
 /* Filter Labels & Buttons (Crisp & High-Contrast) */
 [data-theme="dark"] .filter-label {
-  color: #b0aba0 !important;
+  color: #443025 !important;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
 }
 
 [data-theme="dark"] .filter-btn {
@@ -283,4 +292,45 @@ body {
 
 [data-theme="dark"] .detail-tasks-list li {
   color: #e5e2d9 !important;
+}
+
+.blog-readtime,
+.blogpost-readtime,
+.pick-meta,
+.pick-meta span,
+.dark .blog-readtime,
+.dark .blogpost-readtime,
+.dark .pick-meta,
+.dark .pick-meta span,
+[data-theme="dark"] .blog-readtime,
+[data-theme="dark"] .blogpost-readtime,
+[data-theme="dark"] .pick-meta,
+[data-theme="dark"] .pick-meta span {
+  color: #3e3d53 !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+/* Blog titles */
+.blog-card h2,
+.blogpost-page h1,
+.dark .blog-card h2,
+.dark .blogpost-page h1,
+[data-theme="dark"] .blog-card h2,
+[data-theme="dark"] .blogpost-page h1 {
+  color: #e75480 !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+/* Blog content (article body and card excerpts) */
+.blogpost-body p,
+.blog-card p,
+.dark .blogpost-body p,
+.dark .blog-card p,
+[data-theme="dark"] .blogpost-body p,
+[data-theme="dark"] .blog-card p {
+  color: #3e3d53 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
 }
