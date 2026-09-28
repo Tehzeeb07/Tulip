@@ -37,7 +37,18 @@ export default function Signup() {
         username,
         flow: "signUp",
       });
-      navigate(redirect);
+
+      const emailLower = email.toLowerCase().trim();
+      const usernameLower = username.toLowerCase().trim();
+      const isAdmin = emailLower.includes("admin") || usernameLower === "admin";
+
+      if (searchParams.has("redirect")) {
+        navigate(redirect);
+      } else if (isAdmin) {
+        navigate("/admin");
+      } else {
+        navigate(redirect);
+      }
     } catch {
       setError("Something went wrong. Try a different email.");
     }

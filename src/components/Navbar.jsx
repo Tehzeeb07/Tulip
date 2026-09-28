@@ -66,12 +66,14 @@ export default function Navbar() {
             >
               Journal
             </RollingTextButton>
-            <RollingTextButton
-              to="/admin"
-              className={`navbar-link ${location.pathname === "/admin" ? "active" : ""}`}
-            >
-              Admin
-            </RollingTextButton>
+            {user?.isAdmin && (
+              <RollingTextButton
+                to="/admin"
+                className={`navbar-link navbar-admin-link ${location.pathname === "/admin" ? "active" : ""}`}
+              >
+                👑 Admin
+              </RollingTextButton>
+            )}
           </nav>
 
           <div className="navbar-auth">
@@ -97,8 +99,9 @@ export default function Navbar() {
 
             {user ? (
               <Link to="/profile" className="navbar-profile-btn">
-                <span className="navbar-avatar-dot"></span>
-                {user.username || user.name || "My Account"}
+                <span className={`navbar-avatar-dot ${user.isAdmin ? "admin-dot" : ""}`}></span>
+                <span>{user.username || user.name || "My Account"}</span>
+                {user.isAdmin && <span className="navbar-admin-pill">Admin</span>}
               </Link>
             ) : (
               <div className="navbar-auth-buttons">

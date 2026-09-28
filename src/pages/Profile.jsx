@@ -97,7 +97,22 @@ export default function Profile() {
           </div>
 
           <h1 className="hero-name">{displayName}</h1>
-          <div className="hero-handle">@{user?.username ?? "username"}</div>
+          <div className="hero-handle" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <span>@{user?.username ?? "username"}</span>
+            <span
+              style={{
+                fontSize: "11px",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                padding: "2px 8px",
+                borderRadius: "999px",
+                background: user?.isAdmin ? "rgba(253, 93, 168, 0.2)" : "rgba(16, 185, 129, 0.15)",
+                color: user?.isAdmin ? "#fd5da8" : "#10b981",
+              }}
+            >
+              {user?.isAdmin ? "👑 Admin" : "🌸 Customer"}
+            </span>
+          </div>
 
         </div>
       </div>
@@ -110,6 +125,16 @@ export default function Profile() {
           </nav>
 
           <div className="tab-actions">
+            {user?.isAdmin && (
+              <button
+                type="button"
+                className="edit-btn"
+                style={{ background: "#FD5DA8", color: "#fff", borderColor: "#FD5DA8", marginRight: "8px" }}
+                onClick={() => navigate("/admin")}
+              >
+                ⚙️ Studio Admin
+              </button>
+            )}
             <button className="edit-btn">Edit Profile</button>
           </div>
         </div>

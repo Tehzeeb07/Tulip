@@ -132,6 +132,23 @@
   background: #10b981;
 }
 
+.navbar-avatar-dot.admin-dot {
+  background: #fd5da8;
+  box-shadow: 0 0 6px rgba(253, 93, 168, 0.6);
+}
+
+.navbar-admin-pill {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(253, 93, 168, 0.15);
+  color: #fd5da8;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  margin-left: 2px;
+}
+
 .theme-toggle-btn {
   background: transparent;
   border: 1px solid var(--border-color, rgba(0, 0, 0, 0.1));

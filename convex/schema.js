@@ -13,6 +13,8 @@ export default defineSchema({
     phone: v.optional(v.string()),
     phoneVerificationTime: v.optional(v.float64()),
     username: v.optional(v.string()),
+    role: v.optional(v.string()),
+    isAdmin: v.optional(v.boolean()),
   }).index("email", ["email"]),
   favorites: defineTable({
     userId: v.id("users"),

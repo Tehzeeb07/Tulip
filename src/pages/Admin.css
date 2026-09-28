@@ -1076,6 +1076,56 @@
   background: #202020;
 }
 
+/* Admin Auth Guard Card */
+.admin-auth-guard-card {
+  max-width: 540px;
+  margin: 60px auto;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.08));
+  border-radius: 24px;
+  padding: 48px 36px;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+}
+
+.guard-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.admin-auth-guard-card h2 {
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  margin: 0 0 12px;
+  color: var(--color-text, #2c2724);
+}
+
+.admin-auth-guard-card p {
+  color: var(--color-muted, #716b66);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0 0 28px;
+}
+
+.guard-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.admin-user-pill {
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(253, 93, 168, 0.15);
+  color: #fd5da8;
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .admin-header {

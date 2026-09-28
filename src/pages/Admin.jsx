@@ -21,6 +21,10 @@ const PRESET_SIZES = ["Petite", "Signature", "Grand", "Standard", "Small", "Medi
 
 export default function Admin() {
   // Remote Convex queries & mutations
+  const user = useQuery(api.users.getCurrentUser);
+  const setRole = useMutation(api.users.setRole);
+  const [isUpdatingRole, setIsUpdatingRole] = useState(false);
+
   const remoteProducts = useQuery(api.products.getProducts);
   const seedCatalog = useMutation(api.products.seedProducts);
   const createProduct = useMutation(api.products.createProduct);
@@ -32,6 +36,18 @@ export default function Admin() {
   // Fallback to static catalog if DB is empty or still connecting
   const products = remoteProducts ?? [];
   const isConvexConnected = remoteProducts !== undefined;
+
+  const handleMakeAdmin = async () => {
+    try {
+      setIsUpdatingRole(true);
+      await setRole({ role: "admin" });
+      showToast("👑 Admin permissions granted to your account!");
+    } catch (err) {
+      showToast(`Error updating role: ${err.message}`, "error");
+    } finally {
+      setIsUpdatingRole(false);
+    }
+  };
 
   // Local state filters
   const [search, setSearch] = useState("");
@@ -260,6 +276,67 @@ export default function Admin() {
   const accessoryCount = products.filter((p) => p.type === "accessory").length;
   const outOfStockCount = products.filter((p) => p.inStock === false).length;
 
+  // Auth & Role Access Guards
+  if (user === null) {
+    return (
+      <>
+        <Navbar />
+        <div className="admin-page">
+          <div className="admin-wrap">
+            <div className="admin-auth-guard-card">
+              <div className="guard-icon">🔐</div>
+              <h2>Florist Admin Sign In Required</h2>
+              <p>
+                You must be logged in as an Administrator to view and modify product pricing, imagery, and stock levels.
+              </p>
+              <div className="guard-actions">
+                <Link to="/login?redirect=/admin" className="admin-btn admin-btn-primary">
+                  Sign in as Admin
+                </Link>
+                <Link to="/bouquets" className="admin-btn admin-btn-secondary">
+                  Browse Flower Collection
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (user && !user.isAdmin) {
+    return (
+      <>
+        <Navbar />
+        <div className="admin-page">
+          <div className="admin-wrap">
+            <div className="admin-auth-guard-card">
+              <div className="guard-icon">🌸</div>
+              <h2>Customer Account Detected</h2>
+              <p>
+                You are currently signed in as <strong>{user.email || user.username}</strong> (Customer).
+                Studio inventory and price editing are reserved for administrative staff.
+              </p>
+              <div className="guard-actions">
+                <button
+                  type="button"
+                  className="admin-btn admin-btn-primary"
+                  onClick={handleMakeAdmin}
+                  disabled={isUpdatingRole}
+                >
+                  {isUpdatingRole ? "Activating..." : "👑 Grant My Account Admin Access"}
+                </button>
+                <Link to="/bouquets" className="admin-btn admin-btn-secondary">
+                  Return to Storefront
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <Navbar />
@@ -278,6 +355,11 @@ export default function Admin() {
             <div>
               <div className="admin-badge-row">
                 <span className="admin-tag">STUDIO BACKOFFICE</span>
+                {user?.isAdmin && (
+                  <span className="admin-user-pill">
+                    👑 {user.username || user.email || "Admin"}
+                  </span>
+                )}
                 <span className={`admin-status-dot ${isConvexConnected ? "connected" : "connecting"}`}>
                   {isConvexConnected ? "Connected: tangible-ibis-791" : "Connecting to Convex..."}
                 </span>
