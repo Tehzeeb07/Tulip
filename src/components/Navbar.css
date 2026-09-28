@@ -149,6 +149,33 @@
   margin-left: 2px;
 }
 
+.navbar-user-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-logout-btn {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.05);
+  color: #3f3935;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.navbar-logout-btn:hover {
+  background: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.3);
+  transform: translateY(-1px);
+}
+
 .theme-toggle-btn {
   background: transparent;
   border: 1px solid var(--border-color, rgba(0, 0, 0, 0.1));

@@ -99,6 +99,18 @@ body {
   color: #ffffff !important;
 }
 
+[data-theme="dark"] .navbar-logout-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fdfbf7 !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+[data-theme="dark"] .navbar-logout-btn:hover {
+  background: rgba(239, 68, 68, 0.2) !important;
+  color: #fca5a5 !important;
+  border-color: rgba(239, 68, 68, 0.45) !important;
+}
+
 /* All page backgrounds & wrappers */
 [data-theme="dark"] .bouquets-page,
 [data-theme="dark"] .accessories-page,

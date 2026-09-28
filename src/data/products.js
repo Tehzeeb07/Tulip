@@ -8,6 +8,9 @@ export const PRODUCTS = [
     price: 185,
     occasion: "Wedding",
     sizes: ["Petite", "Signature", "Grand"],
+    palette: "blush",
+    space: "dining",
+    mood: "romantic",
     image: "/images/products/marchesa.jpg",
     images: [
       "/images/products/marchesa.jpg",
@@ -24,6 +27,9 @@ export const PRODUCTS = [
     price: 140,
     occasion: "Everyday",
     sizes: ["Petite", "Signature"],
+    palette: "amber",
+    space: "living",
+    mood: "everyday",
     image: "/images/products/amber-field.jpg",
     images: [
       "/images/products/amber-field.jpg",
@@ -40,6 +46,9 @@ export const PRODUCTS = [
     price: 120,
     occasion: "Sympathy",
     sizes: ["Signature", "Grand"],
+    palette: "botanical",
+    space: "bedside",
+    mood: "solace",
     image: "/images/products/quiet-grove.jpg",
     images: [
       "/images/products/quiet-grove.jpg",
@@ -56,6 +65,9 @@ export const PRODUCTS = [
     price: 210,
     occasion: "Wedding",
     sizes: ["Signature", "Grand"],
+    palette: "moody",
+    space: "dining",
+    mood: "romantic",
     image: "/images/products/vermeil.jpg",
     images: [
       "/images/products/vermeil.jpg",
@@ -72,6 +84,9 @@ export const PRODUCTS = [
     price: 115,
     occasion: "Everyday",
     sizes: ["Petite", "Signature"],
+    palette: "amber",
+    space: "desk",
+    mood: "everyday",
     image: "/images/products/wheatlight.jpg",
     images: [
       "/images/products/wheatlight.jpg",
@@ -87,6 +102,9 @@ export const PRODUCTS = [
     price: 225,
     occasion: "Events",
     sizes: ["Signature", "Grand"],
+    palette: "botanical",
+    space: "living",
+    mood: "celebration",
     image: "/images/products/moss-stem.jpg",
     images: [
       "/images/products/moss-stem.jpg",
@@ -103,6 +121,9 @@ export const PRODUCTS = [
     price: 165,
     occasion: "Everyday",
     sizes: ["Petite", "Signature"],
+    palette: "botanical",
+    space: "bedside",
+    mood: "everyday",
     image: "/images/products/isabella.jpg",
     images: [
       "/images/products/isabella.jpg",
@@ -119,6 +140,9 @@ export const PRODUCTS = [
     price: 155,
     occasion: "Everyday",
     sizes: ["Petite", "Signature", "Grand"],
+    palette: "amber",
+    space: "dining",
+    mood: "celebration",
     image: "/images/products/sienna-sun.jpg",
     images: [
       "/images/products/sienna-sun.jpg",
@@ -135,6 +159,9 @@ export const PRODUCTS = [
     price: 235,
     occasion: "Events",
     sizes: ["Signature", "Grand"],
+    palette: "moody",
+    space: "living",
+    mood: "celebration",
     image: "/images/products/nocturne.jpg",
     images: [
       "/images/products/nocturne.jpg",
@@ -150,6 +177,9 @@ export const PRODUCTS = [
     price: 135,
     occasion: "Sympathy",
     sizes: ["Signature", "Grand"],
+    palette: "botanical",
+    space: "desk",
+    mood: "solace",
     image: "/images/products/wild-heath.jpg",
     images: [
       "/images/products/wild-heath.jpg",
@@ -166,6 +196,9 @@ export const PRODUCTS = [
     price: 175,
     occasion: "Wedding",
     sizes: ["Petite", "Signature", "Grand"],
+    palette: "blush",
+    space: "bedside",
+    mood: "romantic",
     image: "/images/products/petal-mist.jpg",
     images: [
       "/images/products/petal-mist.jpg",
@@ -182,6 +215,9 @@ export const PRODUCTS = [
     price: 215,
     occasion: "Events",
     sizes: ["Signature", "Grand"],
+    palette: "amber",
+    space: "living",
+    mood: "celebration",
     image: "/images/products/solstice.jpg",
     images: [
       "/images/products/solstice.jpg",
@@ -198,6 +234,9 @@ export const PRODUCTS = [
     price: 195,
     occasion: "Wedding",
     sizes: ["Petite", "Signature", "Grand"],
+    palette: "blush",
+    space: "dining",
+    mood: "romantic",
     image: "/images/products/elysian-garden.jpg",
     images: [
       "/images/products/elysian-garden.jpg",
@@ -213,6 +252,9 @@ export const PRODUCTS = [
     price: 145,
     occasion: "Everyday",
     sizes: ["Petite", "Signature"],
+    palette: "amber",
+    space: "desk",
+    mood: "everyday",
     image: "/images/products/golden-hour.jpg",
     images: [
       "/images/products/golden-hour.jpg",
@@ -228,6 +270,9 @@ export const PRODUCTS = [
     price: 250,
     occasion: "Events",
     sizes: ["Signature", "Grand"],
+    palette: "moody",
+    space: "dining",
+    mood: "celebration",
     image: "/images/products/midnight-velvet.jpg",
     images: [
       "/images/products/midnight-velvet.jpg",
@@ -243,6 +288,9 @@ export const PRODUCTS = [
     price: 160,
     occasion: "Sympathy",
     sizes: ["Signature", "Grand"],
+    palette: "botanical",
+    space: "bedside",
+    mood: "solace",
     image: "/images/products/white-sanctuary.jpg",
     images: [
       "/images/products/white-sanctuary.jpg",
@@ -258,6 +306,9 @@ export const PRODUCTS = [
     price: 140,
     occasion: "Sympathy",
     sizes: ["Signature", "Grand"],
+    palette: "botanical",
+    space: "living",
+    mood: "solace",
     image: "/images/products/botanical-solace.jpg",
     images: [
       "/images/products/botanical-solace.jpg",

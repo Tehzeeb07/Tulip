@@ -11,6 +11,9 @@ export const INITIAL_PRODUCTS = [
     price: 185,
     occasion: "Wedding",
     sizes: ["Petite", "Signature", "Grand"],
+    palette: "blush",
+    space: "dining",
+    mood: "romantic",
     image: "/images/products/marchesa.jpg",
     images: [
       "/images/products/marchesa.jpg",
@@ -28,6 +31,9 @@ export const INITIAL_PRODUCTS = [
     price: 140,
     occasion: "Everyday",
     sizes: ["Petite", "Signature"],
+    palette: "amber",
+    space: "living",
+    mood: "everyday",
     image: "/images/products/amber-field.jpg",
     images: [
       "/images/products/amber-field.jpg",
@@ -45,6 +51,9 @@ export const INITIAL_PRODUCTS = [
     price: 120,
     occasion: "Sympathy",
     sizes: ["Signature", "Grand"],
+    palette: "botanical",
+    space: "bedside",
+    mood: "solace",
     image: "/images/products/quiet-grove.jpg",
     images: [
       "/images/products/quiet-grove.jpg",
@@ -62,6 +71,9 @@ export const INITIAL_PRODUCTS = [
     price: 210,
     occasion: "Wedding",
     sizes: ["Signature", "Grand"],
+    palette: "moody",
+    space: "dining",
+    mood: "romantic",
     image: "/images/products/vermeil.jpg",
     images: [
       "/images/products/vermeil.jpg",
@@ -79,6 +91,9 @@ export const INITIAL_PRODUCTS = [
     price: 115,
     occasion: "Everyday",
     sizes: ["Petite", "Signature"],
+    palette: "amber",
+    space: "desk",
+    mood: "everyday",
     image: "/images/products/wheatlight.jpg",
     images: [
       "/images/products/wheatlight.jpg",
@@ -95,6 +110,9 @@ export const INITIAL_PRODUCTS = [
     price: 225,
     occasion: "Events",
     sizes: ["Signature", "Grand"],
+    palette: "botanical",
+    space: "living",
+    mood: "celebration",
     image: "/images/products/moss-stem.jpg",
     images: [
       "/images/products/moss-stem.jpg",
@@ -112,6 +130,9 @@ export const INITIAL_PRODUCTS = [
     price: 165,
     occasion: "Everyday",
     sizes: ["Petite", "Signature"],
+    palette: "botanical",
+    space: "bedside",
+    mood: "everyday",
     image: "/images/products/isabella.jpg",
     images: [
       "/images/products/isabella.jpg",
@@ -129,6 +150,9 @@ export const INITIAL_PRODUCTS = [
     price: 155,
     occasion: "Everyday",
     sizes: ["Petite", "Signature", "Grand"],
+    palette: "amber",
+    space: "dining",
+    mood: "celebration",
     image: "/images/products/sienna-sun.jpg",
     images: [
       "/images/products/sienna-sun.jpg",
@@ -146,6 +170,9 @@ export const INITIAL_PRODUCTS = [
     price: 235,
     occasion: "Events",
     sizes: ["Signature", "Grand"],
+    palette: "moody",
+    space: "living",
+    mood: "celebration",
     image: "/images/products/nocturne.jpg",
     images: [
       "/images/products/nocturne.jpg",
@@ -162,6 +189,9 @@ export const INITIAL_PRODUCTS = [
     price: 135,
     occasion: "Sympathy",
     sizes: ["Signature", "Grand"],
+    palette: "botanical",
+    space: "desk",
+    mood: "solace",
     image: "/images/products/wild-heath.jpg",
     images: [
       "/images/products/wild-heath.jpg",
@@ -179,6 +209,9 @@ export const INITIAL_PRODUCTS = [
     price: 175,
     occasion: "Wedding",
     sizes: ["Petite", "Signature", "Grand"],
+    palette: "blush",
+    space: "bedside",
+    mood: "romantic",
     image: "/images/products/petal-mist.jpg",
     images: [
       "/images/products/petal-mist.jpg",
@@ -196,6 +229,9 @@ export const INITIAL_PRODUCTS = [
     price: 215,
     occasion: "Events",
     sizes: ["Signature", "Grand"],
+    palette: "amber",
+    space: "living",
+    mood: "celebration",
     image: "/images/products/solstice.jpg",
     images: [
       "/images/products/solstice.jpg",
@@ -213,6 +249,9 @@ export const INITIAL_PRODUCTS = [
     price: 195,
     occasion: "Wedding",
     sizes: ["Petite", "Signature", "Grand"],
+    palette: "blush",
+    space: "dining",
+    mood: "romantic",
     image: "/images/products/elysian-garden.jpg",
     images: [
       "/images/products/elysian-garden.jpg",
@@ -229,6 +268,9 @@ export const INITIAL_PRODUCTS = [
     price: 145,
     occasion: "Everyday",
     sizes: ["Petite", "Signature"],
+    palette: "amber",
+    space: "desk",
+    mood: "everyday",
     image: "/images/products/golden-hour.jpg",
     images: [
       "/images/products/golden-hour.jpg",
@@ -245,6 +287,9 @@ export const INITIAL_PRODUCTS = [
     price: 250,
     occasion: "Events",
     sizes: ["Signature", "Grand"],
+    palette: "moody",
+    space: "dining",
+    mood: "celebration",
     image: "/images/products/midnight-velvet.jpg",
     images: [
       "/images/products/midnight-velvet.jpg",
@@ -261,6 +306,9 @@ export const INITIAL_PRODUCTS = [
     price: 160,
     occasion: "Sympathy",
     sizes: ["Signature", "Grand"],
+    palette: "botanical",
+    space: "bedside",
+    mood: "solace",
     image: "/images/products/white-sanctuary.jpg",
     images: [
       "/images/products/white-sanctuary.jpg",
@@ -277,6 +325,9 @@ export const INITIAL_PRODUCTS = [
     price: 140,
     occasion: "Sympathy",
     sizes: ["Signature", "Grand"],
+    palette: "botanical",
+    space: "living",
+    mood: "solace",
     image: "/images/products/botanical-solace.jpg",
     images: [
       "/images/products/botanical-solace.jpg",
@@ -594,18 +645,23 @@ export const seedProducts = mutation({
           createdAt: Date.now(),
         });
         inserted++;
-      } else if (args.force) {
+      } else if ((!existing.palette && item.palette) || args.force) {
         await ctx.db.patch(existing._id, {
-          name: item.name,
-          price: item.price,
-          desc: item.desc,
-          type: item.type,
-          occasion: item.occasion,
-          sizes: item.sizes,
-          image: item.image,
-          images: item.images,
-          careTips: item.careTips,
-          inStock: item.inStock ?? true,
+          ...(args.force ? {
+            name: item.name,
+            price: item.price,
+            desc: item.desc,
+            type: item.type,
+            occasion: item.occasion,
+            sizes: item.sizes,
+            image: item.image,
+            images: item.images,
+            careTips: item.careTips,
+            inStock: item.inStock ?? true,
+          } : {}),
+          palette: item.palette || existing.palette,
+          space: item.space || existing.space,
+          mood: item.mood || existing.mood,
           updatedAt: Date.now(),
         });
         updated++;

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "convex/react";
 import { useAuthActions } from "@convex-dev/auth/react";
@@ -60,7 +60,7 @@ export default function Admin() {
 
   // Fallback to static catalog if DB is empty or still connecting
   const products = remoteProducts && remoteProducts.length > 0 ? remoteProducts : PRODUCTS;
-  const isConvexConnected = remoteProducts !== undefined && remoteProducts.length > 0;
+  const isConvexConnected = remoteProducts !== undefined;
 
   const handleMakeAdmin = async () => {
     try {
@@ -104,6 +104,13 @@ export default function Admin() {
       setIsSeeding(false);
     }
   };
+
+  // Auto-seed initial catalog if remote Convex database has no products yet
+  useEffect(() => {
+    if (remoteProducts !== undefined && remoteProducts.length === 0 && !isSeeding) {
+      handleSeed(false);
+    }
+  }, [remoteProducts]);
 
   // Inline editing prices
   const [editingPriceId, setEditingPriceId] = useState(null);
@@ -418,14 +425,13 @@ export default function Admin() {
               >
                 + Add New Product
               </button>
-              <button
-                type="button"
+              <Link
+                to="/bouquets"
                 className="admin-btn admin-btn-secondary"
-                onClick={handleSignOut}
-                title="Sign out of backoffice session"
+                title="Browse florist storefront as customer"
               >
-                Sign Out
-              </button>
+                View Storefront ↗
+              </Link>
             </div>
           </header>
 
@@ -434,7 +440,11 @@ export default function Admin() {
             <div className="admin-metric-card">
               <span className="metric-label">Total Inventory</span>
               <span className="metric-val">{totalCount}</span>
-              <span className="metric-hint">Items in Convex DB</span>
+              <span className="metric-hint">
+                {isConvexConnected && remoteProducts?.length > 0
+                  ? "Live in Convex DB"
+                  : "Studio Collection"}
+              </span>
             </div>
             <div className="admin-metric-card">
               <span className="metric-label">Bouquets</span>

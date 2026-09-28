@@ -120,7 +120,7 @@ export default function Navbar() {
             </button>
 
             {user ? (
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <div className="navbar-user-section">
                 <Link to="/profile" className="navbar-profile-btn">
                   <span className={`navbar-avatar-dot ${user.isAdmin ? "admin-dot" : ""}`}></span>
                   <span>{user.username || user.name || "My Account"}</span>
@@ -130,18 +130,7 @@ export default function Navbar() {
                   type="button"
                   onClick={handleSignOut}
                   className="navbar-logout-btn"
-                  title="Sign Out"
-                  style={{
-                    background: "transparent",
-                    border: "1px solid var(--border-color, rgba(0, 0, 0, 0.15))",
-                    borderRadius: "999px",
-                    padding: "6px 12px",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    color: "inherit",
-                    cursor: "pointer",
-                    transition: "all 0.2s",
-                  }}
+                  title="Sign Out of your account"
                 >
                   Sign Out
                 </button>
